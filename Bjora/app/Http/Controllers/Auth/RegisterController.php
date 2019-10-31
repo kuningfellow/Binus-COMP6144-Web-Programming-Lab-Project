@@ -7,7 +7,7 @@ use Bjora\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
-use \DateTime;
+// use \DateTime;     ga perlu pake ini soalnya <input type='date'> sudah 'Y-m-d' (sesuai standar SQL)
 
 class RegisterController extends Controller
 {
@@ -52,7 +52,7 @@ class RegisterController extends Controller
         return Validator::make($data, [
             'name' => ['required', 'string', 'max:100'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
-            'password' => ['required', 'string', 'min:6', 'confirmed'],
+            'password' => ['required', 'string', 'min:6', 'alpha_num', 'confirmed'],    // pakai 'alpha_num' dapet error message bagus ketimbang pake 'regex:/[a-zA-Z0-9]/'
             'gender' => ['required'],
             'address' => ['required'],
             'date_of_birth' => ['required', 'date_format:Y-m-d'],   // ternyata HTML <input type='date'> udh auto paksa Y-m-d
