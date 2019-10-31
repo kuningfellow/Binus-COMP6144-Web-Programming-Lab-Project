@@ -169,11 +169,11 @@ return [
         /*
          * Application Service Providers...
          */
-        App\Providers\AppServiceProvider::class,
-        App\Providers\AuthServiceProvider::class,
-        // App\Providers\BroadcastServiceProvider::class,
-        App\Providers\EventServiceProvider::class,
-        App\Providers\RouteServiceProvider::class,
+        Bjora\Providers\AppServiceProvider::class,
+        Bjora\Providers\AuthServiceProvider::class,
+        // Bjora\Providers\BroadcastServiceProvider::class,
+        Bjora\Providers\EventServiceProvider::class,
+        Bjora\Providers\RouteServiceProvider::class,
 
     ],
 
