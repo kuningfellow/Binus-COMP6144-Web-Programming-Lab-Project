@@ -78,7 +78,7 @@ class RegisterController extends Controller
             'address' => $data['address'],
             'date_of_birth' => $data['date_of_birth'],
             // 'date_of_birth' => DateTime::createFromFormat('m/d/Y', $data['date_of_birth'])->format('Y-m-d'),
-            'profile_picture' => Storage::url($storage);
+            'profile_picture' => Storage::url($storage),
         ]);
     }
 }
