@@ -7,6 +7,7 @@ use Bjora\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
+use Illuminate\Support\Facades\Storage;
 // use \DateTime;     ga perlu pake ini soalnya <input type='date'> sudah 'Y-m-d' (sesuai standar SQL)
 
 class RegisterController extends Controller
@@ -56,6 +57,7 @@ class RegisterController extends Controller
             'gender' => ['required'],
             'address' => ['required'],
             'date_of_birth' => ['required', 'date_format:Y-m-d'],   // ternyata HTML <input type='date'> udh auto paksa Y-m-d
+            'profile_picture' => ['required', 'mimes:jpeg,png,jpg'],
         ]);
     }
 
@@ -67,6 +69,7 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
+        $storage = Storage::put('public', $data['profile_picture']);
         return User::create([
             'name' => $data['name'],
             'email' => $data['email'],
@@ -75,6 +78,7 @@ class RegisterController extends Controller
             'address' => $data['address'],
             'date_of_birth' => $data['date_of_birth'],
             // 'date_of_birth' => DateTime::createFromFormat('m/d/Y', $data['date_of_birth'])->format('Y-m-d'),
+            'profile_picture' => Storage::url($storage);
         ]);
     }
 }
