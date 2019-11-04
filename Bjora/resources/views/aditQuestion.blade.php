@@ -5,7 +5,7 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header">{{ __('Add Quesion') }}</div>
+                <div class="card-header">{{ __($form_title) }}</div>
 
                 @error('owner')
                     <div class="alert alert-danger">
@@ -21,7 +21,7 @@
                             <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('Topic') }}</label>
 
                             <div class="col-md-6">
-                                <input id="topic" type="text" name="topic" class="form-control @error('topic') is-invalid @enderror">
+                                <input id="topic" type="text" name="topic" class="form-control @error('topic') is-invalid @enderror" value="{{$post['topic']}}">
 
                                 @error('topic')
                                     <span class="invalid-feedback" role="alert">
@@ -35,7 +35,7 @@
                             <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('Question') }}</label>
 
                             <div class="col-md-6">
-                                <textarea id="question" name="question" placeholder="What is life?" class="form-control @error('question') is-invalid @enderror" rows=3></textarea>
+                                <textarea id="question" name="question" placeholder="{{$post['question']}}" class="form-control @error('question') is-invalid @enderror" rows=3></textarea>
 
                                 @error('question')
                                     <span class="invalid-feedback" role="alert">
