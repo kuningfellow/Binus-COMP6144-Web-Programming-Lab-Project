@@ -16,12 +16,12 @@ class CreateAnswersTable extends Migration
         Schema::create('answers', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->unsignedBigInteger('question_id');
-            $table->unsignedBigInteger('owner');
+            $table->unsignedBigInteger('owner_id');
             $table->string('answer');
             $table->timestamps();
             
             $table->foreign('question_id')->references('id')->on('questions');
-            $table->foreign('owner')->references('id')->on('users');
+            $table->foreign('owner_id')->references('id')->on('users');
         });
     }
 
