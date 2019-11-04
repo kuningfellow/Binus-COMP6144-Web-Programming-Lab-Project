@@ -19,7 +19,7 @@
                             {{ session('failure') }}
                         </div>
                     @endif
-
+                    
                     @if ($post == NULL)
                         Question not found...
                     @else
@@ -30,6 +30,13 @@
                         Topic: {{ $post['topic'] }}
                         <br>
                         Question: {{ $post['question'] }}
+                        <br>
+                        Answers:
+                        <br>
+                        @foreach ($post['answers'] as $answer)
+                            Answerer: {{ $answer->owner->name }}<br>
+                            Nigga said: {{ $answer->answer }}<br>
+                        @endforeach
                         <br>
                     @endif
                 </div>

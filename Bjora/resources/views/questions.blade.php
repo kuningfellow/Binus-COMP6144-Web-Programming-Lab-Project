@@ -19,6 +19,13 @@
                             {{ session('failure') }}
                         </div>
                     @endif
+
+                    <ul>
+                        @foreach ($post as $p)
+                            <li>{{ $p->question }} , {{ $p->topic }}</li>
+                        @endforeach
+                    </ul>
+                    {{ $post->links() }}
                     You are viewing some paginated questions!
                 </div>
             </div>

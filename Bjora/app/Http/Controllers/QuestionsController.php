@@ -11,7 +11,8 @@ class QuestionsController extends Controller
 {
     // controller to view paginated index
     public function index() {
-        return view('questions');
+        $post = Question::paginate(1);
+        return view('questions', ['post' => $post]);
     }
     // controller to view single questions
     public function view(Request $request) {
