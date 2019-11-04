@@ -12,15 +12,14 @@
                         You must be logged in.
                     </div>
                 @enderror
-
+                should go to {{ $post['question_id'] ?? 0 }}
                 <div class="card-body">
-                    <form method="POST" action="/questions/DBupdate/{{ $post['question_id'] }}" enctype="multipart/form-data">
+                    <form method="POST" action="/questions/update/{{ $post['question_id'] }}" enctype="multipart/form-data">
                         @csrf
 
                         <div class="form-group row">
                             <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('Topic') }}</label>
 
-                            <input id="question_id" name="id" value="{{ $post['question_id'] }}">
                             <div class="col-md-6">
                                 <input id="topic" type="text" name="topic" class="form-control @error('topic') is-invalid @enderror" value="{{$post['topic']}}">
 

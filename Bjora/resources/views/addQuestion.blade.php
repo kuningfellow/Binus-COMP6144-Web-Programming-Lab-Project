@@ -7,6 +7,7 @@
             <div class="card">
                 <div class="card-header">{{ __("New Question") }}</div>
 
+                {{-- Shouldn't even get called --}}
                 @error('owner')
                     <div class="alert alert-danger">
                         You must be logged in.
@@ -14,7 +15,7 @@
                 @enderror
 
                 <div class="card-body">
-                    <form method="POST" action="/questions/DBadd" enctype="multipart/form-data">
+                    <form method="POST" action="/questions/add" enctype="multipart/form-data">
                         @csrf
 
                         <div class="form-group row">

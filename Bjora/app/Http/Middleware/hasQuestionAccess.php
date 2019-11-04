@@ -4,6 +4,7 @@ namespace Bjora\Http\Middleware;
 
 use Closure;
 use Bjora\Question;
+use Illuminate\Support\Facades\Auth;
 
 class hasQuestionAccess
 {
@@ -16,6 +17,13 @@ class hasQuestionAccess
      */
     public function handle($request, Closure $next)
     {
-        return $next($request);
+        if (Auth::user() && (
+            Auth::user()->role == 'admin' ||
+            Auth::user()->id == Question::find($request['question_id'])->owner
+        ) ) {
+            return $next($request);
+        } else {
+            return back()->with('failure', 'You are not authorized');
+        }
     }
 }

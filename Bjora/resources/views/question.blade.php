@@ -14,8 +14,14 @@
                         </div>
                     @endif
 
+                    @if (session()->has('failure'))
+                        <div class="alert alert-danger">
+                            {{ session('failure') }}
+                        </div>
+                    @endif
+
                     @if ($post == NULL)
-                        The question is not found
+                        Question not found...
                     @else
                         You are viewing a specific question!
                         <br>

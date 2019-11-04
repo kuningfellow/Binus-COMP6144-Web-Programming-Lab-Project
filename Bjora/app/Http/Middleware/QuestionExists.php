@@ -16,10 +16,10 @@ class QuestionExists
      */
     public function handle($request, Closure $next)
     {
-        if (Question::find($request['question_id'])) {
-            return $next($request);
+        if (Question::find($request['question_id']) == NULL) {
+            return back()->with('failure', 'The requested question does not exist');
         } else {
-            return redirect('error/question_404');
+            return $next($request);
         }
     }
 }

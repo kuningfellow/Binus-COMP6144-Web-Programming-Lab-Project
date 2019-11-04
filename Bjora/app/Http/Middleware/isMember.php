@@ -3,6 +3,7 @@
 namespace Bjora\Http\Middleware;
 
 use Closure;
+use Illuminate\Support\Facades\Auth;
 
 class isMember
 {
@@ -15,6 +16,10 @@ class isMember
      */
     public function handle($request, Closure $next)
     {
-        return $next($request);
+        if (Auth::user()) {
+            return $next($request);
+        } else {
+            return redirect('login');
+        }
     }
 }

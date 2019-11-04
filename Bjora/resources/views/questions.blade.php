@@ -14,6 +14,11 @@
                         </div>
                     @endif
 
+                    @if (session()->has('failure'))
+                        <div class="alert alert-danger">
+                            {{ session('failure') }}
+                        </div>
+                    @endif
                     You are viewing some paginated questions!
                 </div>
             </div>
