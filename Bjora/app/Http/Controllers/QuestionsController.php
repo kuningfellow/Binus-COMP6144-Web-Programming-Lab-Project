@@ -22,14 +22,10 @@ class QuestionsController extends Controller
     public function updateQuestion(Request $request) {
         // only for owner or admin
         $data = $this->getQuestionByID($request['question_id']);
-        $post = [];
-        if ($data && $data->topic) {
-            $post['topic'] = $data->topic;
+        $post = $data;
+        if ($data != NULL) {
+            $post = ['question_id' => $data->id, 'topic' => $data->topic, 'question' => $data->question];
         }
-        if ($data && $data->question) {
-            $post['question'] = $data->question;
-        }
-        // $post = ['topic' => $data->topic, 'question' => $data->question];
         return view('updateQuestion', ['post' => $post]);
     }
     public function closeQuestion(Request $request) {
@@ -65,7 +61,6 @@ class QuestionsController extends Controller
     // operation and validation for Model:Question update
     public function DBupdate(Request $request) {
         $validatedData = $request->validate([
-            'owner' => 'required',
             'topic' => 'required',
             'question' => 'required',
         ]);
@@ -74,7 +69,7 @@ class QuestionsController extends Controller
             $row->topic = $request['topic'];
             $row->question = $request['question'];
         }
-        return redirect('question/{question_id}');
+        return redirect('questions/' . strval($request['question_id']));
     }
     // operation and validation for Model:Question 
     public function DBclose(Request $request) {

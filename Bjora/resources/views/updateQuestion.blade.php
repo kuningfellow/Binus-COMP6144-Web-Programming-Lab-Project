@@ -14,12 +14,13 @@
                 @enderror
 
                 <div class="card-body">
-                    <form method="POST" action="/questions/DBupdate" enctype="multipart/form-data">
+                    <form method="POST" action="/questions/DBupdate/{{ $post['question_id'] }}" enctype="multipart/form-data">
                         @csrf
 
                         <div class="form-group row">
                             <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('Topic') }}</label>
 
+                            <input id="question_id" name="id" value="{{ $post['question_id'] }}">
                             <div class="col-md-6">
                                 <input id="topic" type="text" name="topic" class="form-control @error('topic') is-invalid @enderror" value="{{$post['topic']}}">
 
@@ -35,7 +36,7 @@
                             <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('Question') }}</label>
 
                             <div class="col-md-6">
-                                <textarea id="question" name="question" placeholder="{{$post['question']}}" class="form-control @error('question') is-invalid @enderror" rows=3></textarea>
+                                <textarea id="question" name="question" placeholder="{{$post['question']}}" class="form-control @error('question') is-invalid @enderror" rows=3>{{ $post['question'] }}</textarea>
 
                                 @error('question')
                                     <span class="invalid-feedback" role="alert">

@@ -23,5 +23,8 @@ Route::get('/questions', 'QuestionsController@index');
 Route::get('/questions/add', 'QuestionsController@addQuestion');
 Route::get('/questions/update/{question_id}', 'QuestionsController@updateQuestion');
 Route::post('/questions/DBadd', 'QuestionsController@DBadd');
-Route::post('/questions/DBupdate', 'QuestionsController@DBupdate');
+Route::post('/questions/DBupdate/{question_id}', 'QuestionsController@DBupdate');
 Route::get('/questions/{question_id}', 'QuestionsController@view');
+Route::get('/error/question_404', function() {
+    return view('question_404');
+});
