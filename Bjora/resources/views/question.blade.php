@@ -14,7 +14,18 @@
                         </div>
                     @endif
 
-                    You are viewing a specific question!
+                    @if ($post == NULL)
+                        The question is not found
+                    @else
+                        You are viewing a specific question!
+                        <br>
+                        Author: {{ $post['owner'] }}
+                        <br>
+                        Topic: {{ $post['topic'] }}
+                        <br>
+                        Question: {{ $post['question'] }}
+                        <br>
+                    @endif
                 </div>
             </div>
         </div>

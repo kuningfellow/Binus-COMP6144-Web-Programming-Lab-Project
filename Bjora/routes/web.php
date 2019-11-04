@@ -21,6 +21,7 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 Route::get('/questions', 'QuestionsController@index');
 Route::get('/questions/add', 'QuestionsController@addQuestion');
-Route::get('/questions/edit/{question_id}', 'QuestionsController@editQuestion');
-Route::post('/questions/update/{topic?}/{question?}', 'QuestionsController@update');
-Route::get('/questions/{question_id}', 'QuestionsController@questionID');
+Route::get('/questions/update/{question_id}', 'QuestionsController@updateQuestion');
+Route::post('/questions/DBadd', 'QuestionsController@DBadd');
+Route::post('/questions/DBupdate', 'QuestionsController@DBupdate');
+Route::get('/questions/{question_id}', 'QuestionsController@view');

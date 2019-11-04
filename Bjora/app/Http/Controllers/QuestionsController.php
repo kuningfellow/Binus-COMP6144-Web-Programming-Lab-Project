@@ -9,32 +9,42 @@ use Auth;
 
 class QuestionsController extends Controller
 {
-    public function addQuestion() {
-        // only for logged in users (any member or admin)
-        $post = ['topic' => 'Miscelaneous', 'question' => "What is the expected time complexity of the Quicksort algorithm?"];
-        \Log::info($post);
-        return view('aditQuestion', ['form_title' => 'New Question', 'post' => $post]);
-    }
-    public function editQuestion(Request $request) {
-        // only for owner or admin
-        $data = Question::where('id', $request['question_id'])->get(['topic', 'question'])->first();
-        $post = ['topic' => $data->topic, 'question' => $data->topic];
-        return view('aditQuestion', ['form_title' => 'Edit Question', 'post' => $post]);
-    }
-    public function deleteQuestion() {
-        // do some DB delete
-        // only for owner or admin
-    }
-    public function questionID() {
-        return view('question');
-    }
     public function index() {
         return view('questions');
     }
-    public function update(Request $request) {
-        // validator for Model:Question data updates
-        // also does the DB updates
-        // just send the form to this controller
+    // controller to return view and parameters
+    public function addQuestion() {
+        // only for logged in users (any member or admin)
+        $post = ['topic' => 'Miscelaneous', 'question' => "What is the expected time complexity of the Quicksort algorithm?"];
+        return view('addQuestion', ['post' => $post]);
+    }
+    // controller to return view and parameters
+    public function updateQuestion(Request $request) {
+        // only for owner or admin
+        $data = $this->getQuestionByID($request['question_id']);
+        $post = [];
+        if ($data && $data->topic) {
+            $post['topic'] = $data->topic;
+        }
+        if ($data && $data->question) {
+            $post['question'] = $data->question;
+        }
+        // $post = ['topic' => $data->topic, 'question' => $data->question];
+        return view('updateQuestion', ['post' => $post]);
+    }
+    public function closeQuestion(Request $request) {
+        // mark question as closed
+    }
+    public function deleteQuestion(Request $request) {
+        // only for owner or admin
+        return view('questions');
+    }
+    public function view(Request $request) {
+        $post = $this->getQuestionByID($request['question_id']);
+        return view('question', ['post' => $post]);
+    }
+    // operation and validation for Model:Question insertion
+    public function DBadd(Request $request) {
         $request['owner'] = NULL;
         if (Auth::user()) {
             $request['owner'] = Auth::user()->id;
@@ -50,6 +60,31 @@ class QuestionsController extends Controller
             'topic' => $request['topic'],
             'question' => $request['question'],
         ]);
-        return redirect('questions', ['message' => 'Question Successfully added']);
+        return redirect('questions');
+    }
+    // operation and validation for Model:Question update
+    public function DBupdate(Request $request) {
+        $validatedData = $request->validate([
+            'owner' => 'required',
+            'topic' => 'required',
+            'question' => 'required',
+        ]);
+        $row = Question::find($request['question_id']);
+        if ($row != NULL) {
+            $row->topic = $request['topic'];
+            $row->question = $request['question'];
+        }
+        return redirect('question/{question_id}');
+    }
+    // operation and validation for Model:Question 
+    public function DBclose(Request $request) {
+        $row = Question::find($request['question_id']);
+        if ($row != NULL) {
+            $row->status = 'closed';
+        }
+        return redirect('question/{question_id}');
+    }
+    public function getQuestionByID($question_id) {
+        return Question::where('id', $question_id)->get()->first();
     }
 }
