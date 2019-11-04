@@ -8,5 +8,5 @@ class Question extends Model
 {
     protected $fillable = [
         'owner', 'status', 'topic', 'question',
-    ]
+    ];
 }

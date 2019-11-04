@@ -20,4 +20,6 @@ Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 
 Route::get('/questions', 'QuestionsController@index');
+Route::get('/questions/add', 'QuestionsController@addQuestion');
+Route::post('/questions/update/{topic?}/{question?}', 'QuestionsController@update');
 Route::get('/question', 'QuestionsController@questionID');
