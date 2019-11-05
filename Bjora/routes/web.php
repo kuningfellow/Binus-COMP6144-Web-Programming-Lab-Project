@@ -48,3 +48,5 @@ Route::post('/profiles/update/', 'UsersController@DBupdate')->middleware(['UserE
 Route::post('/profiles/delete/', 'UsersController@DBdelete')->middleware(['UserExists', 'hasUserAccess']);
 
 Route::get('/profiles/{user_id}', 'UsersController@view');
+
+// Message Section
