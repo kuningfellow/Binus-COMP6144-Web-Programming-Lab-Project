@@ -63,6 +63,7 @@ class Kernel extends HttpKernel
         'UserExists' => \Bjora\Http\Middleware\UserExists::class,
         'AnswerExists' => \Bjora\Http\Middleware\AnswerExists::class,
         'QuestionExists' => \Bjora\Http\Middleware\QuestionExists::class,
+        'TopicOptionExists' => \Bjora\Http\Middleware\TopicOptionExists::class,
         'QuestionIsOpen' => \Bjora\Http\Middleware\QuestionIsOpen::class,
         'hasUserAccess' => \Bjora\Http\Middleware\hasUserAccess::class,
         'hasAnswerAccess' => \Bjora\Http\Middleware\hasAnswerAccess::class,

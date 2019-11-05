@@ -49,4 +49,10 @@ Route::post('/profiles/delete/', 'UsersController@DBdelete')->middleware(['UserE
 
 Route::get('/profiles/{user_id}', 'UsersController@view');
 
-// Message Section
+// Topic Options Section
+Route::get('/topics', 'TopicOptionsController@index')->middleware(['isAdmin']);
+Route::get('/topics/add', 'TopicOptionsController@addTopic')->middleware(['isAdmin']);
+Route::get('/topics/update/{topic_id}', 'TopicOptionsController@updateTopic')->middleware(['isAdmin', 'TopicOptionExists']);
+Route::post('/topics/add', 'TopicOptionsController@DBadd')->middleware(['isAdmin']);
+Route::post('/topics/update/', 'TopicOptionsController@DBupdate')->middleware(['isAdmin', 'TopicOptionExists']);
+Route::post('/topics/delete/', 'TopicOptionsController@DBdelete')->middleware(['isAdmin', 'TopicOptionExists']);
