@@ -13,12 +13,7 @@
                             {{ session('status') }}
                         </div>
                     @endif
-
-                    @if (session()->has('failure'))
-                        <div class="alert alert-danger">
-                            {{ session('failure') }}
-                        </div>
-                    @endif
+@component('parts.statusMessage')@endcomponent
                     
                     @if ($post == NULL)
                         Question not found...

@@ -5,7 +5,7 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header">Dashboard</div>
+                <div class="card-header">Profiles</div>
 
                 <div class="card-body">
                     @if (session('status'))
@@ -15,12 +15,11 @@
                     @endif
 @component('parts.statusMessage')@endcomponent
                     <ul>
-                        @foreach ($post as $p)
-                            <li>{{ $p->question }} , {{ $p->topic }}</li>
+                        @foreach ($user as $p)
+                            <li>{{ $p->name }} , {{ $p->email }}, {{ $p->password }}</li>
                         @endforeach
                     </ul>
-                    {{ $post->links() }}
-                    You are viewing some paginated questions!
+                    You are viewing user list!
                 </div>
             </div>
         </div>

@@ -7,23 +7,20 @@
             <div class="card">
                 <div class="card-header">{{ __("New Question") }}</div>
 
-                {{-- Shouldn't even get called --}}
-                @error('owner')
-                    <div class="alert alert-danger">
-                        You must be logged in.
-                    </div>
-                @enderror
-
                 <div class="card-body">
-                    <form method="POST" action="/questions/add" enctype="multipart/form-data">
+@component('parts.statusMessage')@endcomponent
+                    <form method="POST" action="/questions/add" enctype="multipart/form-data" id="question">
                         @csrf
 
                         <div class="form-group row">
                             <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('Topic') }}</label>
 
                             <div class="col-md-6">
-                                <input id="topic" type="text" name="topic" class="form-control @error('topic') is-invalid @enderror" value="{{$post['topic']}}">
-
+                                <select name="topic" form="question" class="form-control @error('topic') is-invalid @enderror">
+                                    @foreach($topic as $t)
+                                        <option value="{{ $t->topic }}">{{ $t->topic }}</option>
+                                    @endforeach
+                                </select>
                                 @error('topic')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>

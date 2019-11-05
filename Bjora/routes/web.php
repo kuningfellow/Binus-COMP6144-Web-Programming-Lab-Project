@@ -36,3 +36,10 @@ Route::post('/answers/delete/', 'AnswersController@DBdelete')->middleware(['Ques
 
 // View question
 Route::get('/questions/{question_id}', 'QuestionsController@view');
+
+Route::get('/profiles', 'UsersController@view');
+Route::get('/profiles/add', 'UsersController@addUser');
+Route::get('/profiles/addADMIN', 'UsersController@addUserADMIN');
+Route::post('/profiles/add', 'UsersController@DBadd');
+Route::get('/profiles/update/{user_id}', 'UsersController@updateUser');
+Route::post('/profiles/update/', 'UsersController@DBupdate');

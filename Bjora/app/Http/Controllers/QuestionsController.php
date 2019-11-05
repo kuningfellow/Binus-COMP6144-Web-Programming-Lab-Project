@@ -23,7 +23,8 @@ class QuestionsController extends Controller
     // controller to return addQuestion view
     public function addQuestion() {
         $post = ['topic' => 'Miscelaneous', 'question' => "What is the expected time complexity of the Quicksort algorithm?"];
-        return view('addQuestion', ['post' => $post]);
+        $topic = $this->getTopicOption();
+        return view('addQuestion', ['post' => $post, 'topic' => $topic]);
     }
     // controller to return updateQuestion view
     public function updateQuestion(Request $request) {
@@ -32,6 +33,7 @@ class QuestionsController extends Controller
         $topic = $this->getTopicOption();
         return view('updateQuestion', ['post' => $post, 'topic' => $topic]);
     }
+
     /*
         Validates and does Model:Question insertions
         redirects to 'questions/'
@@ -54,7 +56,7 @@ class QuestionsController extends Controller
             $row->question = $request['question'];
             $row->save();
         }
-        return redirect('questions/' . $request['question_id']);
+        return redirect('questions/' . $request['question_id'])->with('success', 'Question successfully updated');
     }
     /*
         Validates and does Model:Question 'status' closing
@@ -66,7 +68,7 @@ class QuestionsController extends Controller
             $row->status = 'closed';
             $row->save();
         }
-        return redirect('questions/' . $request['question_id']);
+        return redirect('questions/' . $request['question_id'])->with('success', 'Question successfully closed');
     }
     /*
         Validates and does Model:Question deletions
@@ -77,8 +79,9 @@ class QuestionsController extends Controller
         if ($row != NULL) {
             $row->delete();
         }
-        return redirect('questions');
+        return redirect('questions')->with('success', 'Question successfully deleted');
     }
+
     // Gets a single row by the ID
     public function getQuestionByID($question_id) {
         return Question::where('id', $question_id)->get()->first();
