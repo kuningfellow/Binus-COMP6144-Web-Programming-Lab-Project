@@ -22,7 +22,7 @@
         <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('Question') }}</label>
 
         <div class="col-md-6">
-            <textarea id="question" name="question" placeholder="{{$post['question']}}" class="form-control @error('question') is-invalid @enderror" rows=3></textarea>
+            <textarea id="question" name="question" placeholder="{{$post['question']??"Ask some question"}}" class="form-control @error('question') is-invalid @enderror" rows=3>{{$post['question']??""}}</textarea>
 
             @error('question')
                 <span class="invalid-feedback" role="alert">
@@ -32,6 +32,7 @@
         </div>
     </div>
 
+    {{ $slot }}
     <div class="form-group row mb-0">
         <div class="col-md-6 offset-md-4">
             <button type="submit" class="btn btn-primary">

@@ -17,19 +17,17 @@ class QuestionsController extends Controller
     }
     // controller to view single questions
     public function view(Request $request) {
-        $post = $this->getQuestionByID($request['question_id']);
+        $post = Question::find($request['question_id']);
         return view('question', ['post' => $post]);
     }
     // controller to return addQuestion view
     public function addQuestion() {
-        $post = ['topic' => 'Miscelaneous', 'question' => "What is the expected time complexity of the Quicksort algorithm?"];
         $topic = $this->getTopicOption();
-        return view('addQuestion', ['post' => $post, 'topic' => $topic]);
+        return view('addQuestion', ['post' => NULL, 'topic' => $topic]);
     }
     // controller to return updateQuestion view
     public function updateQuestion(Request $request) {
-        $data = $this->getQuestionByID($request['question_id']);
-        $post = ['question_id' => $data->id, 'topic' => $data->topic, 'question' => $data->question];
+        $post = Question::find($request['question_id']);
         $topic = $this->getTopicOption();
         return view('updateQuestion', ['post' => $post, 'topic' => $topic]);
     }
@@ -82,10 +80,6 @@ class QuestionsController extends Controller
         return redirect('questions')->with('success', 'Question successfully deleted');
     }
 
-    // Gets a single row by the ID
-    public function getQuestionByID($question_id) {
-        return Question::where('id', $question_id)->get()->first();
-    }
     // Gets selection
     public function getTopicOption() {
         return TopicOption::get('topic');
