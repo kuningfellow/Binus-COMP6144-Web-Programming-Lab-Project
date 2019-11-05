@@ -23,7 +23,7 @@ class hasQuestionAccess
         ) ) {
             return $next($request);
         } else {
-            return back()->with('failure', 'You are not authorized');
+            return back()->with('failure', 'You are not authorized to edit the question');
         }
     }
 }

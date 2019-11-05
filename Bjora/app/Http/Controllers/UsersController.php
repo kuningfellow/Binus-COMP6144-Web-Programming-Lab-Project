@@ -8,9 +8,13 @@ use Bjora\User;
 
 class UsersController extends Controller
 {
-    public function view() {
+    public function index() {
         $user = User::all();
         return view('profiles', ['user' => $user]);
+    }
+    public function view(Request $request) {
+        $user = User::find($request['user_id']);
+        return view('profile', ['user' => $user]);
     }
     public function addUser() {
         return view('addUser', ['user' => NULL]);
@@ -26,6 +30,7 @@ class UsersController extends Controller
         $user = User::find($request['user_id']);
         return view('updateUserADMIN', ['user' => $user]);
     }
+
     public function DBadd(Request $request) {
         $validatedData = $request->validate([ 
             'role' => ['required'],
@@ -87,7 +92,7 @@ class UsersController extends Controller
             if ($request['profile_picture']) $row->profile_picture = $request['profile_picture'];
             $row->save();
         }
-        return redirect('profiles')->with('success', 'User successfully updated');
+        return redirect('profiles/' . $request['user_id'])->with('success', 'User successfully updated');
     }
     public function DBdelete(Request $request) {
         $row = User::find($request['user_id']);

@@ -3,10 +3,9 @@
 namespace Bjora\Http\Middleware;
 
 use Closure;
-use Bjora\Answer;
 use Illuminate\Support\Facades\Auth;
 
-class hasAnswerAccess
+class hasUserAccess
 {
     /**
      * Handle an incoming request.
@@ -17,13 +16,15 @@ class hasAnswerAccess
      */
     public function handle($request, Closure $next)
     {
-        if (Auth::user() && (
+        if ($request['role'] != NULL && $request['role'] == 'admin' && (Auth::user()->role??'member') != 'admin') {
+            return back()->with('failure', 'Only administrator can promote member to admin');
+        } else if (Auth::user() && (
             Auth::user()->role == 'admin' ||
-            Auth::user()->id == Answer::find($request['answer_id'])->owner_id
+            Auth::user()->id == $request['user_id']
         ) ) {
             return $next($request);
         } else {
-            return back()->with('failure', 'You are not authorized to edit the answer');
+            return back()->with('failure', 'You are not authorized to edit the user');
         }
     }
 }
