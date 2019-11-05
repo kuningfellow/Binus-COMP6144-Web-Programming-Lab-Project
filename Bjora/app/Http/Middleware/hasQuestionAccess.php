@@ -19,7 +19,7 @@ class hasQuestionAccess
     {
         if (Auth::user() && (
             Auth::user()->role == 'admin' ||
-            Auth::user()->id == Question::find($request['id'])->owner_id
+            Auth::user()->id == Question::find($request['question_id'])->owner_id
         ) ) {
             return $next($request);
         } else {

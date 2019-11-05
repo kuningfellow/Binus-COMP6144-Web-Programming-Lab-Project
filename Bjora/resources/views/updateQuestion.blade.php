@@ -52,7 +52,7 @@
                             </div>
                         </div>
 
-                        <input type="hidden" name="id" value="{{ $post['id'] }}">
+                        <input type="hidden" name="question_id" value="{{ $post['id'] }}">
                         <div class="form-group row mb-0">
                             <div class="col-md-6 offset-md-4">
                                 <button type="submit" class="btn btn-primary">

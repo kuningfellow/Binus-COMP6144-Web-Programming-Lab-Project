@@ -16,7 +16,7 @@ class QuestionIsOpen
      */
     public function handle($request, Closure $next)
     {
-        if (Question::find($request['id'])->status == 'closed') {
+        if (Question::find($request['question_id'])->status == 'closed') {
             return back()->with('failure', 'The requested question is closed');
         } else {
             return $next($request);

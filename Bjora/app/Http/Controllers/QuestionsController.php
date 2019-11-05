@@ -16,7 +16,7 @@ class QuestionsController extends Controller
     }
     // controller to view single questions
     public function view(Request $request) {
-        $post = $this->getQuestionByID($request['id']);
+        $post = $this->getQuestionByID($request['question_id']);
         return view('question', ['post' => $post]);
     }
     // controller to return addQuestion view
@@ -27,7 +27,7 @@ class QuestionsController extends Controller
     // controller to return updateQuestion view
     public function updateQuestion(Request $request) {
         $data = $this->getQuestionByID($request['id']);
-        $post = ['id' => $data->id, 'topic' => $data->topic, 'question' => $data->question];
+        $post = ['question_id' => $data->id, 'topic' => $data->topic, 'question' => $data->question];
         return view('updateQuestion', ['post' => $post]);
     }
     /*
@@ -46,32 +46,32 @@ class QuestionsController extends Controller
     */
     public function DBupdate(Request $request) {
         $validatedData = $request->validate([ 'topic' => 'required', 'question' => 'required', ]);
-        $row = Question::find($request['id']);
+        $row = Question::find($request['question_id']);
         if ($row != NULL) {
             $row->topic = $request['topic'];
             $row->question = $request['question'];
             $row->save();
         }
-        return redirect('questions/' . $request['id']);
+        return redirect('questions/' . $request['question_id']);
     }
     /*
         Validates and does Model:Question 'status' closing
         redirects to 'questions/{question_id}'
     */
     public function DBclose(Request $request) {
-        $row = Question::find($request['id']);
+        $row = Question::find($request['question_id']);
         if ($row != NULL) {
             $row->status = 'closed';
             $row->save();
         }
-        return redirect('questions/' . $request['id']);
+        return redirect('questions/' . $request['question_id']);
     }
     /*
         Validates and does Model:Question deletions
         redirects to 'questions/'
     */
     public function DBdelete(Request $request) {
-        $row = Question::find($request['id']);
+        $row = Question::find($request['question_id']);
         if ($row != NULL) {
             $row->delete();
         }

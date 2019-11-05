@@ -24,7 +24,7 @@ Route::get('/questions', 'QuestionsController@index');
 // Questions
 Route::get('/questions/add', 'QuestionsController@addQuestion')->middleware('isUser');
 Route::post('/questions/add', 'QuestionsController@DBadd')->middleware('isUser');
-Route::get('/questions/update/{id}', 'QuestionsController@updateQuestion')->middleware(['QuestionExists', 'QuestionIsOpen', 'hasQuestionAccess']);
+Route::get('/questions/update/{question_id}', 'QuestionsController@updateQuestion')->middleware(['QuestionExists', 'QuestionIsOpen', 'hasQuestionAccess']);
 Route::post('/questions/update/', 'QuestionsController@DBupdate')->middleware(['QuestionExists', 'QuestionIsOpen', 'hasQuestionAccess']);
 Route::post('/questions/close/', 'QuestionsController@DBclose')->middleware(['QuestionExists', 'QuestionIsOpen', 'hasQuestionAccess']);
 Route::post('/questions/delete/', 'QuestionsController@DBdelete')->middleware(['QuestionExists', 'hasQuestionAccess']);
@@ -35,4 +35,4 @@ Route::post('/answers/update/', 'AnswersController@DBupdate')->middleware(['Ques
 Route::post('/answers/delete/', 'AnswersController@DBdelete')->middleware(['QuestionExists', 'AnswerExists', 'hasAnswerAccess']);
 
 // View question
-Route::get('/questions/{id}', 'QuestionsController@view');
+Route::get('/questions/{question_id}', 'QuestionsController@view');
