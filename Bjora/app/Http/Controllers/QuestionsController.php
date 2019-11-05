@@ -4,6 +4,7 @@ namespace Bjora\Http\Controllers;
 
 use Illuminate\Http\Request;
 
+use Bjora\TopicOption;
 use Bjora\Question;
 use Auth;
 
@@ -26,9 +27,10 @@ class QuestionsController extends Controller
     }
     // controller to return updateQuestion view
     public function updateQuestion(Request $request) {
-        $data = $this->getQuestionByID($request['id']);
+        $data = $this->getQuestionByID($request['question_id']);
         $post = ['question_id' => $data->id, 'topic' => $data->topic, 'question' => $data->question];
-        return view('updateQuestion', ['post' => $post]);
+        $topic = $this->getTopicOption();
+        return view('updateQuestion', ['post' => $post, 'topic' => $topic]);
     }
     /*
         Validates and does Model:Question insertions
@@ -80,5 +82,9 @@ class QuestionsController extends Controller
     // Gets a single row by the ID
     public function getQuestionByID($question_id) {
         return Question::where('id', $question_id)->get()->first();
+    }
+    // Gets selection
+    public function getTopicOption() {
+        return TopicOption::get('topic');
     }
 }

@@ -17,8 +17,9 @@ class AnswersController extends Controller
     }
     public function DBupdate(Request $request) {
         $validatedData = $request->validate([ 'answer' => 'required', ]);
-        $row = Answer::find($request['id']);
+        $row = Answer::find($request['answer_id']);
         if ($row != NULL) {
+            $row->question_id = $request['question_id'];
             $row->answer = $request['answer'];
             $row->save();
         }
