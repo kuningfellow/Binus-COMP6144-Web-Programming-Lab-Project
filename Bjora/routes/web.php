@@ -28,14 +28,13 @@ Route::get('/questions/update/{question_id}', 'QuestionsController@updateQuestio
 Route::post('/questions/update/', 'QuestionsController@DBupdate')->middleware(['QuestionExists', 'QuestionIsOpen', 'hasQuestionAccess']);
 Route::post('/questions/close/', 'QuestionsController@DBclose')->middleware(['QuestionExists', 'QuestionIsOpen', 'hasQuestionAccess']);
 Route::post('/questions/delete/', 'QuestionsController@DBdelete')->middleware(['QuestionExists', 'hasQuestionAccess']);
+// View Question
+Route::get('/questions/{question_id}', 'QuestionsController@view');
 
 // Answers
 Route::post('/answers/add/', 'AnswersController@DBadd')->middleware(['isUser', 'QuestionExists', 'QuestionIsOpen']);
 Route::post('/answers/update/', 'AnswersController@DBupdate')->middleware(['QuestionExists', 'AnswerExists', 'hasAnswerAccess']);
 Route::post('/answers/delete/', 'AnswersController@DBdelete')->middleware(['QuestionExists', 'AnswerExists', 'hasAnswerAccess']);
-
-// View question
-Route::get('/questions/{question_id}', 'QuestionsController@view');
 
 // User Profile Section
 Route::get('/profiles', 'UsersController@index')->middleware(['isAdmin']);
@@ -46,7 +45,7 @@ Route::get('/profiles/updateADMIN/{user_id}', 'UsersController@updateUserADMIN')
 Route::post('/profiles/add', 'UsersController@DBadd')->middleware(['isAdmin']);
 Route::post('/profiles/update/', 'UsersController@DBupdate')->middleware(['UserExists', 'hasUserAccess']);
 Route::post('/profiles/delete/', 'UsersController@DBdelete')->middleware(['UserExists', 'hasUserAccess']);
-
+// View Profile
 Route::get('/profiles/{user_id}', 'UsersController@view');
 
 // Topic Options Section
@@ -56,3 +55,5 @@ Route::get('/topics/update/{topic_id}', 'TopicOptionsController@updateTopic')->m
 Route::post('/topics/add', 'TopicOptionsController@DBadd')->middleware(['isAdmin']);
 Route::post('/topics/update/', 'TopicOptionsController@DBupdate')->middleware(['isAdmin', 'TopicOptionExists']);
 Route::post('/topics/delete/', 'TopicOptionsController@DBdelete')->middleware(['isAdmin', 'TopicOptionExists']);
+
+// Message Section
