@@ -13,16 +13,18 @@ class UsersController extends Controller
         return view('profiles', ['user' => $user]);
     }
     public function addUser() {
-        $user = ['role' => "admin"];
-        return view('addUser', ['user' => $user]);
+        return view('addUser', ['user' => NULL]);
     }
     public function addUserADMIN() {
-        $user = "";
-        return view('addUserADMIN', ['user' => $user]);
+        return view('addUserADMIN', ['user' => NULL]);
     }
     public function updateUser(Request $request) {
         $user = User::find($request['user_id']);
         return view('updateUser', ['user' => $user]);
+    }
+    public function updateUserADMIN(Request $request) {
+        $user = User::find($request['user_id']);
+        return view('updateUserADMIN', ['user' => $user]);
     }
     public function DBadd(Request $request) {
         $validatedData = $request->validate([ 
@@ -48,15 +50,30 @@ class UsersController extends Controller
         return redirect('profiles')->with('success', 'User successfully added');
     }
     public function DBupdate(Request $request) {
-        if ($request['role'] == NULL) $request['role'] = 'member';
+        $email_validate = [];
+        $password_validate = [];
+        $profile_picture_validate = [];
+        // if password form is filled (user wants to change password)
+        if ($request['password'] != NULL) {
+            $password_validate = ['required', 'min:6', 'alpha_num', 'confirmed'];
+        }
+        // if email form was changed (need to check availability)
+        if ($request['email'] != User::find($request['user_id'])->email) {
+            $email_validate = ['required', 'string', 'email', 'max:255', 'unique:users'];
+        }
+        // if profile picture form was filled (need to check valid format)
+        if ($request['profile_picture'] != NULL) {
+            $profile_picture_validate = ['required', 'mimes:jpeg,png,jpg'];
+        }
         $validateData = $request->validate([
             'role' => ['required'],
             'name' => ['required', 'string', 'max:100'],
-            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
-            'password' => ['sometimes|required', 'min:6', 'alpha_num', 'confirmed'],
+            'email' => $email_validate,
+            'password' => $password_validate,
             'gender' => ['required'],
             'address' => ['required'],
             'date_of_birth' => ['required', 'date_format:Y-m-d'],
+            'profile_picture' => $profile_picture_validate,
         ]);
         $row = User::find($request['user_id']);
         if ($row != NULL) {
@@ -71,5 +88,12 @@ class UsersController extends Controller
             $row->save();
         }
         return redirect('profiles')->with('success', 'User successfully updated');
+    }
+    public function DBdelete(Request $request) {
+        $row = User::find($request['user_id']);
+        if ($row != NULL) {
+            $row->delete();
+        }
+        return redirect('profiles')->with('success', 'User successfully deleted');
     }
 }

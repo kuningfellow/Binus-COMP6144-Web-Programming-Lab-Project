@@ -9,7 +9,7 @@
 
                 <div class="card-body">
 @component('parts.statusMessage')@endcomponent
-                    @component('parts.userForm', ['user' => $user, 'target' => 'add'])
+                    @component('parts.userForm', ['user' => $user, 'action' => 'add'])
                         <input type="hidden" name="role" value="member">
                     @endcomponent
                 </div>

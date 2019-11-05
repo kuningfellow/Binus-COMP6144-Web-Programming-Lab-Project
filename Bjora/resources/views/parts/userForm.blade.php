@@ -1,4 +1,4 @@
-<form method="POST" novalidate action="/profiles/{{ $target }}" enctype="multipart/form-data" id="user">
+<form method="POST" novalidate action="/profiles/{{ $action }}" enctype="multipart/form-data" id="user">
     @csrf
 
     <div class="form-group row">
@@ -50,8 +50,8 @@
         <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('Gender') }}</label>
         <div class="col-md-6">
             <div class="form-control @error('gender') is-invalid @enderror">
-                <input id="gender" type="radio" name="gender" value="male" @if($user!=NULL && $user['gender'] == "male") checked @endif>Male
-                <input id="gender" type="radio" name="gender" value="female" @if($user!=NULL && $user['gender'] == "female") checked @endif>Female
+                <input id="gender" type="radio" name="gender" value="male" @if(($user['gender']??"") == "male") checked @endif>Male
+                <input id="gender" type="radio" name="gender" value="female" @if(($user['gender']??"") == "female") checked @endif>Female
             </div>
             @error('gender')
                 <span class="invalid-feedback" role="alert">
@@ -76,7 +76,7 @@
     <div class="form-group row">
         <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('Date of Birth') }}</label>
         <div class="col-md-6">
-            <input id="date_of_birth" type="date" name="date_of_birth" class="form-control @error('date_of_birth') is-invalid @enderror" value="{{ $user['date_of_birth'] }}">
+            <input id="date_of_birth" type="date" name="date_of_birth" class="form-control @error('date_of_birth') is-invalid @enderror" value="{{ $user['date_of_birth']??"" }}">
             @error('date_of_birth')
                 <span class="invalid-feedback" role="alert">
                     <strong>{{ $message }}</strong>

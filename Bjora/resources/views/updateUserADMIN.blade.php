@@ -5,11 +5,12 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header">{{ __('Add new User') }}</div>
-
+                <div class="card-header">{{ __('update user') }}</div>
+                
                 <div class="card-body">
 @component('parts.statusMessage')@endcomponent
-                    @component('parts.userForm', ['user' => $user, 'action' => 'add'])
+                    @component('parts.userForm', ['user' => $user, 'action' => 'update'])
+                        <input type="hidden" name="user_id" value={{ $user['id'] }}>
                         <div class="form-group row">
                             <label for="role" class="col-md-4 col-form-label text-md-right">{{ __('Role') }}</label>
                             <div class="col-md-6">
