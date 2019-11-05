@@ -16,7 +16,7 @@ class QuestionExists
      */
     public function handle($request, Closure $next)
     {
-        if (Question::find($request['question_id']) == NULL) {
+        if (Question::find($request['id']) == NULL) {
             return back()->with('failure', 'The requested question does not exist');
         } else {
             return $next($request);

@@ -5,7 +5,7 @@ namespace Bjora\Http\Middleware;
 use Closure;
 use Illuminate\Support\Facades\Auth;
 
-class isMember
+class isUser
 {
     /**
      * Handle an incoming request.
@@ -19,7 +19,7 @@ class isMember
         if (Auth::user()) {
             return $next($request);
         } else {
-            return redirect('login');
+            return back()->with('failure', 'You are not logged in');
         }
     }
 }

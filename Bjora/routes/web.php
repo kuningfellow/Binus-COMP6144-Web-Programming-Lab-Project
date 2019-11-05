@@ -21,23 +21,18 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 Route::get('/questions', 'QuestionsController@index');
 
-// Add question
-Route::get('/questions/add', 'QuestionsController@addQuestion')->middleware('isMember');
-Route::post('/questions/add', 'QuestionsController@DBadd')->middleware('isMember');
+// Questions
+Route::get('/questions/add', 'QuestionsController@addQuestion')->middleware('isUser');
+Route::post('/questions/add', 'QuestionsController@DBadd')->middleware('isUser');
+Route::get('/questions/update/{id}', 'QuestionsController@updateQuestion')->middleware(['QuestionExists', 'QuestionIsOpen', 'hasQuestionAccess']);
+Route::post('/questions/update/', 'QuestionsController@DBupdate')->middleware(['QuestionExists', 'QuestionIsOpen', 'hasQuestionAccess']);
+Route::post('/questions/close/', 'QuestionsController@DBclose')->middleware(['QuestionExists', 'QuestionIsOpen', 'hasQuestionAccess']);
+Route::post('/questions/delete/', 'QuestionsController@DBdelete')->middleware(['QuestionExists', 'hasQuestionAccess']);
 
-// Update question
-Route::get('/questions/update/{question_id}', 'QuestionsController@updateQuestion')->middleware(['QuestionExists', 'QuestionIsOpen', 'hasQuestionAccess']);
-Route::post('/questions/update/{question_id}', 'QuestionsController@DBupdate')->middleware(['QuestionExists', 'QuestionIsOpen', 'hasQuestionAccess']);
-
-// NOTE: maybe change to post
-// Close question
-Route::get('/questions/close/{question_id}', 'QuestionsController@DBclose')->middleware(['QuestionExists', 'QuestionIsOpen', 'hasQuestionAccess']);
-
-// Delete question
-Route::get('/questions/delete/{question_id}', 'QuestionsController@DBdelete')->middleware(['QuestionExists', 'hasQuestionAccess']);
+// Answers
+Route::post('/answers/add/', 'AnswersController@DBadd')->middleware(['isUser', 'QuestionExists', 'QuestionIsOpen']);
+Route::post('/answers/update/', 'AnswersController@DBupdate')->middleware(['QuestionExists', 'AnswerExists', 'hasAnswerAccess']);
+Route::post('/answers/delete/', 'AnswersController@DBdelete')->middleware(['QuestionExists', 'AnswerExists', 'hasAnswerAccess']);
 
 // View question
-Route::get('/questions/{question_id}', 'QuestionsController@view');
-
-
-
+Route::get('/questions/{id}', 'QuestionsController@view');

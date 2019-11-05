@@ -12,9 +12,16 @@
                         You must be logged in.
                     </div>
                 @enderror
-                should go to {{ $post['question_id'] ?? 0 }}
+
+                @if (session()->has('failure'))
+                    <div class="alert alert-danger">
+                        {{ session('failure') }}
+                    </div>
+                @endif
+
+                should go to {{ $post['id'] ?? 0 }}
                 <div class="card-body">
-                    <form method="POST" action="/questions/update/{{ $post['question_id'] }}" enctype="multipart/form-data">
+                    <form method="POST" action="/questions/update/" enctype="multipart/form-data">
                         @csrf
 
                         <div class="form-group row">
@@ -45,6 +52,7 @@
                             </div>
                         </div>
 
+                        <input type="hidden" name="id" value="{{ $post['id'] }}">
                         <div class="form-group row mb-0">
                             <div class="col-md-6 offset-md-4">
                                 <button type="submit" class="btn btn-primary">

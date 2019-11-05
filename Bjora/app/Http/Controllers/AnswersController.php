@@ -4,18 +4,31 @@ namespace Bjora\Http\Controllers;
 
 use Illuminate\Http\Request;
 
+use Bjora\Answer;
+use Auth;
+
 class AnswersController extends Controller
 {
-    public function addAnswer() {
-        // do some DB insert
-        // only for logged in users (any member or admin)
+    public function DBadd(Request $request) {
+        $request['owner_id'] = Auth::user()->id;
+        $validatedData = $request->validate([ 'question_id' => 'required', 'owner_id' => 'required', 'answer' => 'required', ]);
+        Answer::create([ 'question_id' => $request['question_id'], 'owner_id' => $request['owner_id'], 'answer' => $request['answer'], ]);
+        return redirect('questions/' . $request['question_id']);
     }
-    public function editAnswer() {
-        // do some DB update
-        // only for owner or admin
+    public function DBupdate(Request $request) {
+        $validatedData = $request->validate([ 'answer' => 'required', ]);
+        $row = Answer::find($request['id']);
+        if ($row != NULL) {
+            $row->answer = $request['answer'];
+            $row->save();
+        }
+        return redirect('questions/' . $request['question_id']);
     }
-    public function deleteAnswer() {
-        // do some DB delte
-        // only for owner or admin
+    public function DBdelete(Request $request) {
+        $row = Answer::find($request['id']);
+        if ($row != NULL) {
+            $row->delete();
+        }
+        return redirect('questions/' . $request['question_id']);
     }
 }

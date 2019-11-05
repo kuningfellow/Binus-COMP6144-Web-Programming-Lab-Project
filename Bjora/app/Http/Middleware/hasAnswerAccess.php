@@ -3,7 +3,8 @@
 namespace Bjora\Http\Middleware;
 
 use Closure;
-use Answer;
+use Bjora\Answer;
+use Illuminate\Support\Facades\Auth;
 
 class hasAnswerAccess
 {
@@ -16,6 +17,13 @@ class hasAnswerAccess
      */
     public function handle($request, Closure $next)
     {
-        return $next($request);
+        if (Auth::user() && (
+            Auth::user()->role == 'admin' ||
+            Auth::user()->id == Answer::find($request['id'])->owner_id
+        ) ) {
+            return $next($request);
+        } else {
+            return back()->with('failure', 'You are not authorized');
+        }
     }
 }

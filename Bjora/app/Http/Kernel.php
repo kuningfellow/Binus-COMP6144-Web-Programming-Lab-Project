@@ -60,11 +60,11 @@ class Kernel extends HttpKernel
         'signed' => \Illuminate\Routing\Middleware\ValidateSignature::class,
         'throttle' => \Illuminate\Routing\Middleware\ThrottleRequests::class,
         'verified' => \Illuminate\Auth\Middleware\EnsureEmailIsVerified::class,
-        'isMember' => \Bjora\Http\Middleware\isMember::class,
-        'isAdmin' => \Bjora\Http\Middleware\isAdmin::class,
         'QuestionExists' => \Bjora\Http\Middleware\QuestionExists::class,
         'QuestionIsOpen' => \Bjora\Http\Middleware\QuestionIsOpen::class,
         'hasQuestionAccess' => \Bjora\Http\Middleware\hasQuestionAccess::class,
+        'hasAnswerAccess' => \Bjora\Http\Middleware\hasAnswerAccess::class,
+        'isUser' => \Bjora\Http\Middleware\isUser::class,
     ];
 
     /**
