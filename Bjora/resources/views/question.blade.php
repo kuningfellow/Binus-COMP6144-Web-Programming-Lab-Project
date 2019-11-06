@@ -35,6 +35,10 @@
                                 <input type="hidden" name="answer_id" value="{{ $answer->id }}">
                                 <input type="hidden" name="question_id" value="{{ $question->id }}">
                             @endcomponent
+                            @component('parts.fastFormTemplate', ['action' => 'answers/delete', 'button' => 'Delete'])
+                                <input type="hidden" name="answer_id" value="{{ $answer->id }}">
+                                <input type="hidden" name="question_id" value="{{ $question->id }}">
+                            @endcomponent
                         @endforeach
                         <br>
                     @endif

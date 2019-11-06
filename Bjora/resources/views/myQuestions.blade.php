@@ -21,6 +21,9 @@
                             @component('parts.fastFormTemplate', ['action' => 'questions/close', 'button' => 'close question'])
                                 <input type="hidden" name="question_id" value="{{ $q->id }}">
                             @endcomponent
+                            @component('parts.fastFormTemplate', ['action' => 'questions/delete', 'button' => 'delete question'])
+                                <input type="hidden" name="question_id" value="{{ $q->id }}">
+                            @endcomponent
                         @endforeach
                     </ul>
                     {{ $question->links() }}

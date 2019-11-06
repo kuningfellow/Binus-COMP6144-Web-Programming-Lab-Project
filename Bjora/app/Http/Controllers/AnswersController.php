@@ -30,7 +30,7 @@ class AnswersController extends Controller
         return redirect('questions/' . $request['question_id']);
     }
     public function DBdelete(Request $request) {
-        $row = Answer::find($request['id']);
+        $row = Answer::find($request['answer_id']);
         if ($row != NULL) {
             $row->delete();
         }

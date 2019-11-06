@@ -33,9 +33,9 @@ Route::get('/questions/{question_id}', 'QuestionsController@view'); //->middlewa
 
 // Answers
 Route::post('/answers/add/', 'AnswersController@DBadd')->middleware(['isUser', 'QuestionExists', 'QuestionIsOpen']);
-Route::get('/answers/update/', 'AnswersController@update')->middleware(['QuestionExists', 'AnswerExists', 'hasAnswerAccess']);
-Route::post('/answers/update/', 'AnswersController@DBupdate')->middleware(['QuestionExists', 'AnswerExists', 'hasAnswerAccess']);
-Route::post('/answers/delete/', 'AnswersController@DBdelete')->middleware(['QuestionExists', 'AnswerExists', 'hasAnswerAccess']);
+Route::get('/answers/update/', 'AnswersController@update')->middleware(['QuestionExists', 'QuestionIsOpen', 'AnswerExists', 'hasAnswerAccess']);
+Route::post('/answers/update/', 'AnswersController@DBupdate')->middleware(['QuestionExists', 'QuestionIsOpen', 'AnswerExists', 'hasAnswerAccess']);
+Route::post('/answers/delete/', 'AnswersController@DBdelete')->middleware(['QuestionExists', 'QuestionIsOpen', 'AnswerExists', 'hasAnswerAccess']);
 
 // User Profile Section
 Route::get('/users', 'UsersController@index')->middleware(['isAdmin']);
