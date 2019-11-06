@@ -26,6 +26,9 @@
                         <br>
                         Question: {{ $question['question'] }}
                         <br>
+                        @component('parts.fastFormTemplate', ['action' => 'questions/update', 'method' => 'GET', 'button' => 'Update'])
+                            <input type="hidden" name="question_id" value="{{ $question->id }}">
+                        @endcomponent
                         Answers:
                         <br>
                         @foreach ($question['answers'] as $answer)

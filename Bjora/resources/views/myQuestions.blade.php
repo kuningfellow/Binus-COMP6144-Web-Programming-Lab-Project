@@ -15,17 +15,22 @@
                     @endif
 @component('parts.statusMessage')@endcomponent
                     {{ Auth::user()->name }}'s questions<br>
-                    <ul>
+                    <div class="form-group row">
                         @foreach ($question as $q)
-                            <li>{{ $q->question }} , {{ $q->topic }}</li>
+                        <div class="col-md-6">
+                            {{ $q->question }} , {{ $q->topic }}
+                            @component('parts.fastFormTemplate', ['action' => 'questions/update', 'button' => 'update question', 'method' => 'GET'])
+                                <input type="hidden" name="question_id" value="{{ $q->id }}">
+                            @endcomponent
                             @component('parts.fastFormTemplate', ['action' => 'questions/close', 'button' => 'close question'])
                                 <input type="hidden" name="question_id" value="{{ $q->id }}">
                             @endcomponent
                             @component('parts.fastFormTemplate', ['action' => 'questions/delete', 'button' => 'delete question'])
                                 <input type="hidden" name="question_id" value="{{ $q->id }}">
                             @endcomponent
+                        </div>
                         @endforeach
-                    </ul>
+                    </div>
                     {{ $question->links() }}
                     You are viewing some paginated questions!
                 </div>

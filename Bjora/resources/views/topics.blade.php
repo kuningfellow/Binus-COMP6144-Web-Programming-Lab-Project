@@ -15,10 +15,17 @@
                     @endif
 @component('parts.statusMessage')@endcomponent
                     <ul>
-                        @foreach ($topic as $p)
-                            <li>{{ $p->topic }}</li>
+                        @foreach ($topic as $t)
+                            <li>{{ $t->topic }}</li>
+                            @component('parts.fastFormTemplate', ['action' => 'topics/update', 'method' => 'GET', 'button' => 'Edit'])
+                                <input type="hidden" name="topic_id" value="{{ $t->id }}">
+                            @endcomponent
+                            @component('parts.fastFormTemplate', ['action' => 'topics/delete', 'button' => 'Delete'])
+                                <input type="hidden" name="topic_id" value="{{ $t->id }}">
+                            @endcomponent
                         @endforeach
                     </ul>
+                    @component('parts.fastFormTemplate', ['action' => 'topics/add', 'method' => 'GET', 'button' => 'Add'])@endcomponent
                     You are viewing available topics!
                 </div>
             </div>

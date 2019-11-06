@@ -19,6 +19,15 @@
                             <li>
                                 <a href="/questions/{{$q->id}}">{{$q->question}}</a>
                                 {{ $q->topic }}
+                                @component('parts.fastFormTemplate', ['action' => 'questions/close', 'button' => 'Close'])
+                                    <input type="hidden" name="question_id" value="{{ $q->id }}">
+                                @endcomponent
+                                @component('parts.fastFormTemplate', ['action' => 'questions/update', 'method' => 'GET', 'button' => 'Update'])
+                                    <input type="hidden" name="question_id" value="{{ $q->id }}">
+                                @endcomponent
+                                @component('parts.fastFormTemplate', ['action' => 'questions/delete', 'button' => 'Delete'])
+                                    <input type="hidden" name="question_id" value="{{ $q->id }}">
+                                @endcomponent
                             </li>
                         @endforeach
                     </ul>

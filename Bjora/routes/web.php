@@ -11,20 +11,22 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// Route::get('/', function () {
+//     return view('welcome');
+// });
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+// Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/', 'QuestionsController@index');
+Route::get('/home', 'QuestionsController@index');
 
-Route::get('/questions', 'QuestionsController@index');
+Route::get('/questions', 'QuestionsController@manageQuestions')->middleware(['isAdmin']);
 Route::get('/myQuestions', 'QuestionsController@myQuestions')->middleware(['isUser']);
 // Questions
 Route::get('/questions/add', 'QuestionsController@addQuestion')->middleware(['isUser']);
 Route::post('/questions/add', 'QuestionsController@DBadd')->middleware(['isUser']);
-Route::get('/questions/update/{question_id}', 'QuestionsController@updateQuestion')->middleware(['QuestionExists', 'QuestionIsOpen', 'hasQuestionAccess']);
+Route::get('/questions/update/', 'QuestionsController@updateQuestion')->middleware(['QuestionExists', 'QuestionIsOpen', 'hasQuestionAccess']);
 Route::post('/questions/update/', 'QuestionsController@DBupdate')->middleware(['QuestionExists', 'QuestionIsOpen', 'hasQuestionAccess']);
 Route::post('/questions/close/', 'QuestionsController@DBclose')->middleware(['QuestionExists', 'QuestionIsOpen', 'hasQuestionAccess']);
 Route::post('/questions/delete/', 'QuestionsController@DBdelete')->middleware(['QuestionExists', 'hasQuestionAccess']);
@@ -41,8 +43,8 @@ Route::post('/answers/delete/', 'AnswersController@DBdelete')->middleware(['Ques
 Route::get('/users', 'UsersController@index')->middleware(['isAdmin']);
 Route::get('/users/add', 'UsersController@addUser')->middleware(['isAdmin']);
 Route::get('/users/addADMIN', 'UsersController@addUserADMIN')->middleware(['isAdmin']);
-Route::get('/users/update/{user_id}', 'UsersController@updateUser')->middleware(['UserExists', 'hasUserAccess']);
-Route::get('/users/updateADMIN/{user_id}', 'UsersController@updateUserADMIN')->middleware(['isAdmin', 'UserExists']);
+Route::get('/users/update/', 'UsersController@updateUser')->middleware(['UserExists', 'hasUserAccess']);
+Route::get('/users/updateADMIN/', 'UsersController@updateUserADMIN')->middleware(['isAdmin', 'UserExists']);
 Route::post('/users/add', 'UsersController@DBadd')->middleware(['isAdmin']);
 Route::post('/users/update/', 'UsersController@DBupdate')->middleware(['UserExists', 'hasUserAccess']);
 Route::post('/users/delete/', 'UsersController@DBdelete')->middleware(['UserExists', 'hasUserAccess']);
@@ -52,7 +54,7 @@ Route::get('/users/{user_id}', 'UsersController@view'); //->middleware(['UserExi
 // Topic Options Section
 Route::get('/topics', 'TopicOptionsController@index')->middleware(['isAdmin']);
 Route::get('/topics/add', 'TopicOptionsController@addTopic')->middleware(['isAdmin']);
-Route::get('/topics/update/{topic_id}', 'TopicOptionsController@updateTopic')->middleware(['isAdmin', 'TopicOptionExists']);
+Route::get('/topics/update/', 'TopicOptionsController@updateTopic')->middleware(['isAdmin', 'TopicOptionExists']);
 Route::post('/topics/add', 'TopicOptionsController@DBadd')->middleware(['isAdmin']);
 Route::post('/topics/update/', 'TopicOptionsController@DBupdate')->middleware(['isAdmin', 'TopicOptionExists']);
 Route::post('/topics/delete/', 'TopicOptionsController@DBdelete')->middleware(['isAdmin', 'TopicOptionExists']);

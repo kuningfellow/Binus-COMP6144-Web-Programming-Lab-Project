@@ -16,7 +16,7 @@
                             <div class="col-md-6">
                                 <select name="role" form="user" class="form-control @error('role') is-invalid @enderror">
                                     <option value="member" @if(($user['role']??"") == "member") selected @endif>Member</option>
-                                    <option value="admin" @if(($user['role']??"") == "admin") checked @endif>Admin</option>
+                                    <option value="admin" @if(($user['role']??"") == "admin") selected @endif>Admin</option>
                                 </select>
                                 @error('role')
                                     <span class="invalid-feedback" role="alert">

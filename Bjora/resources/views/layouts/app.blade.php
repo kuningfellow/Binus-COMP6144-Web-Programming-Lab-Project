@@ -32,12 +32,34 @@
 
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <!-- Left Side Of Navbar -->
-                    <ul class="navbar-nav mr-auto">
-
+                    @if (Auth::user() && Auth::user()->role == 'admin')
+                    <ul class="navbar-nav">
+                        <li class="nav-item dropdown navbar-nav ml-auto">
+                            <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Manage</a>
+                            <div class="dropdown-menu dropdown-menu-left" aria-labelledby="navbarDropdown">
+                                <a class="dropdown-item" href="/users">Users</a>
+                                <a class="dropdown-item" href="/questions">Questions</a>
+                                <a class="dropdown-item" href="/topics">Topics</a>
+                            </div>
+                        </li>
                     </ul>
-
+                    @endif
+                    @guest @else
+                        <ul class="navbar-nav mr-auto">
+                            <a class="nav-link" href="/myQuestions/">My Questions</a>
+                            <a class="nav-link" href="/messages/">Inbox</a>
+                        </ul>
+                    @endguest
                     <!-- Right Side Of Navbar -->
                     <ul class="navbar-nav ml-auto">
+                        @guest @else
+                            <li class="nav-item">
+                                <a class="nav-link" href="/questions/add">Add Question</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="/users/{{Auth::user()->id}}">Profile</a>
+                            </li>
+                        @endguest
                         <!-- Authentication Links -->
                         @guest
                             <li class="nav-item">

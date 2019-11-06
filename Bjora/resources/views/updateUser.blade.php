@@ -10,8 +10,8 @@
                 <div class="card-body">
 @component('parts.statusMessage')@endcomponent
                     @component('parts.userForm', ['user' => $user, 'action' => 'update'])
-                        <input type="hidden" name="user_id" value={{ $user['id'] }}>
-                        <input type="hidden" name="role" value="member">
+                        <input type="hidden" name="user_id" value="{{ $user['id'] }}">
+                        <input type="hidden" name="role" value="{{ $user['role'] }}">
                     @endcomponent
                 </div>
             </div>

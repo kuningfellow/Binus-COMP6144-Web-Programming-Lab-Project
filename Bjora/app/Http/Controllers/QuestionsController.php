@@ -24,6 +24,10 @@ class QuestionsController extends Controller
         $question = Question::where('owner_id', Auth::user()->id)->paginate(1);
         return view('myQuestions', ['question' => $question]);
     }
+    public function manageQuestions() {
+        $question = Question::paginate(1);
+        return view('manageQuestions', ['question' => $question]);
+    }
     // controller to return addQuestion view
     public function addQuestion() {
         $topic = $this->getTopicOption();

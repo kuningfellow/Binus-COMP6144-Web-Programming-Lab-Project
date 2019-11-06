@@ -15,9 +15,9 @@
 
                 <div class="card-body">
 @component('parts.statusMessage')@endcomponent
-                    @component('parts.questionForm', ['question' => $question, 'topic' => $topic, 'action' => 'update'])
+                    @component('parts.questionForm', ['question' => $question, 'topic' => $topic, 'action' => 'update', 'button' => 'Update'])
                         <input type="hidden" name="question_id" value="{{ $question['id'] }}">
-                    @endcomponent                    
+                    @endcomponent
                 </div>
             </div>
         </div>

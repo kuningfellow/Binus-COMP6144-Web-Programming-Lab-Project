@@ -17,7 +17,14 @@
                     <ul>
                         @foreach ($user as $p)
                             <li>{{ $p->name }} , {{ $p->email }}, {{ $p->password }}</li>
+                            @component('parts.fastFormTemplate', ['action' => 'users/updateADMIN', 'method' => 'GET', 'button' => 'Update'])
+                                <input type='hidden' name='user_id' value="{{ $p->id }}">
+                            @endcomponent
+                            @component('parts.fastFormTemplate', ['action' => 'users/delete', 'method' => 'POST', 'button' => 'Delete'])
+                                <input type='hidden' name='user_id' value="{{ $p->id }}">
+                            @endcomponent
                         @endforeach
+                        @component('parts.fastFormTemplate', ['action' => 'users/addADMIN', 'method' => 'GET', 'button' => 'Add'])@endcomponent
                     </ul>
                     You are viewing user list!
                 </div>
