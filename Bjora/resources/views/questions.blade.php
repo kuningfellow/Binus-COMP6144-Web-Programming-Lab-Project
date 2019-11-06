@@ -17,14 +17,19 @@
                     @component('parts.fastFormTemplate', ['action' => 'home', 'method' => 'GET', 'button' => 'Search'])
                         <input type='text' name='search' value="{{ $search??"" }}">
                     @endcomponent
-                    <ul>
+                    {{-- <ul> --}}
                         @foreach ($question as $q)
-                            <li>
+                            {{-- <li> --}}
+                                    {{-- <div class="col-md-6 text-md-right"> --}}
+                                <div class="col-md-10">
                                 <a href="/questions/{{$q->id}}">{{$q->question}}</a>
                                 {{ $q->topic }}
-                            </li>
+                                
+                                    {{-- </div> --}}
+                                </div>
+                            {{-- </li> --}}
                         @endforeach
-                    </ul>
+                    {{-- </ul> --}}
 
                     {{-- {{ $question->links() }} <- Search tidak persistent --}}
                     {{ $question->appends(request()->except('page'))->links() }} {{-- <- Pake ini supaya search bisa persistent waktu paginate --}}

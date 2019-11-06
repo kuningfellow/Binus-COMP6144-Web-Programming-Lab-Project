@@ -18,6 +18,7 @@
                         User not found...
                     @else
                         You are viewing user {{ $user->name }}!
+                        @component('parts.PP', ['user' => $user, 'size' => "200px", 'radius' => '0%'])@endcomponent
                         @component('parts.fastFormTemplate', ['action' => 'users/update', 'method' => 'GET', 'button' => 'Update'])
                             <input type='hidden' name='user_id' value="{{ $user->id }}">
                         @endcomponent
