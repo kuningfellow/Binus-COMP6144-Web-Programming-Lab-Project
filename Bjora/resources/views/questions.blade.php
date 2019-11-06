@@ -9,38 +9,33 @@
 
                 <div class="card-body">
 @component('parts.statusMessage')@endcomponent
-                    <div class="form-group col-form-label">
+                    <div class="col-md-6">
                     @component('parts.fastFormTemplate', ['action' => 'home', 'method' => 'GET', 'button' => 'Search'])
-                        <input type='text' width="200" name='search' value="{{ $search??"" }}">
+                        {{-- <div class="row form-group"> --}}
+                            {{-- <label for="search" class="col-md-4 col-form-label text-md-left">Search</label> --}}
+                            <span class="col-md-10" style="float:right">
+                                <input id="search" class="form-control" type='text' name='search' value="{{ $search??"" }}" placeholder="Search by Question or Username">
+                            </span>
+                        {{-- </div> --}}
                     @endcomponent
                     </div>
+                    <br><br>
                     @foreach ($question as $q)
-                        <div class="col-mid-8" style="margin-bottom: 20px">
-                            
-                            <div class="col-mid-10">
-                                {{ $q->topic }}<br>
-                                <a href="/questions/{{$q->id}}">{{$q->question}}</a>
-                            </div>
-                                {{-- <span class="text-md-right"> --}}
+                        <div class="col-mid-10" style="margin-bottom: 20px">
+                            {{$q->topic }}<br>
+                            <a href="/questions/{{$q->id}}">{{$q->question}}</a>
                             <div class="col-mid-10" style="margin-bottom: 90px">
                                 <span class="col-form-label text-md-left" style="float: left;">
                                     @component('parts.PP', ['user' => $q->owner, 'size' => '70px', 'radius' => '100%'])@endcomponent
                                 </span>
                                 <span class="col-md-4 col-form-label text-md-left" style="float: left;">
-                                        <a class="nav-item" href="/users/{{ $q->owner }}">{{ $q->owner->name }}</a>
+                                        <a class="nav-item" href="/users/{{ $q->owner->id }}">{{ $q->owner->name }}</a>
                                         <br>
                                         Created at: {{ $q->created_at }}
                                 </span>
                             </div>
-                            {{ $q->question }}
-                            <br>
-                            <a class="btn btn-primary" href="/questions/{{ $q->id }}">Answer</a>
-                            {{-- <div class="text-md-left" style="text-align: right">{{ $q->created_at }}</div> --}}
-                            {{-- <span class="text-md-right" style="float: right"> --}}
-                                {{-- {{ $q->topic }} --}}
-                            {{-- </span> --}}
-                                {{-- </span> --}}
-                            {{-- </span> --}}
+                            <div style="margin-bottom: 20px">{{ $q->question }}</div>
+                            <div style="margin-bottom: 50px"><a class="btn btn-primary" href="/questions/{{ $q->id }}">Answer</a></div>
                         </div>
                     @endforeach
 
