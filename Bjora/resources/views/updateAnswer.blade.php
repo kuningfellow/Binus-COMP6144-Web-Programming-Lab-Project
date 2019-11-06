@@ -27,9 +27,9 @@
                             <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('Edit Answer') }}</label>
 
                             <div class="col-md-6">
-                                <textarea id="question" name="question" placeholder="{{$answer['answer']}}" class="form-control @error('answer') is-invalid @enderror" rows=3>{{ $answer['answer'] }}</textarea>
+                                <textarea id="answer" name="answer" placeholder="{{$answer['answer']}}" class="form-control @error('answer') is-invalid @enderror" rows=3>{{ $answer['answer'] }}</textarea>
 
-                                @error('question')
+                                @error('answer')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>

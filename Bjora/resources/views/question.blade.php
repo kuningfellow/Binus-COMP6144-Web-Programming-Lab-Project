@@ -31,6 +31,10 @@
                         @foreach ($question['answers'] as $answer)
                             Answerer: {{ $answer->owner->name }}<br>
                             Nigga said: {{ $answer->answer }}<br>
+                            @component('parts.fastFormTemplate', ['action' => 'answers/update', 'method' => 'GET', 'button' => 'Update'])
+                                <input type="hidden" name="answer_id" value="{{ $answer->id }}">
+                                <input type="hidden" name="question_id" value="{{ $question->id }}">
+                            @endcomponent
                         @endforeach
                         <br>
                     @endif
