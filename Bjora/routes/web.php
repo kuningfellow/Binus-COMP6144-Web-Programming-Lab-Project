@@ -21,9 +21,11 @@ Auth::routes();
 Route::get('/', 'QuestionsController@index');
 Route::get('/home', 'QuestionsController@index');
 
+Route::get('/search', 'QuestionsController@search');
+
+// Questions
 Route::get('/questions', 'QuestionsController@manageQuestions')->middleware(['isAdmin']);
 Route::get('/myQuestions', 'QuestionsController@myQuestions')->middleware(['isUser']);
-// Questions
 Route::get('/questions/add', 'QuestionsController@addQuestion')->middleware(['isUser']);
 Route::post('/questions/add', 'QuestionsController@DBadd')->middleware(['isUser']);
 Route::get('/questions/update/', 'QuestionsController@updateQuestion')->middleware(['QuestionExists', 'QuestionIsOpen', 'hasQuestionAccess']);

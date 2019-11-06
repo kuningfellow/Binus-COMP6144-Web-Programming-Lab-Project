@@ -20,7 +20,7 @@
                     @else
                         You are viewing a specific question!
                         <br>
-                        Author: {{ $question['owner'] }}
+                        Author: {{ $question['owner']->name }}
                         <br>
                         Topic: {{ $question['topic'] }}
                         <br>

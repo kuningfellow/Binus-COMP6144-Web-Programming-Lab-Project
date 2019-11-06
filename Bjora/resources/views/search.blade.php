@@ -14,9 +14,6 @@
                         </div>
                     @endif
 @component('parts.statusMessage')@endcomponent
-                    @component('parts.fastFormTemplate', ['action' => 'search', 'method' => 'GET', 'button' => 'Search'])
-                        <input type='text' name='search'>
-                    @endcomponent
                     <ul>
                         @foreach ($question as $q)
                             <li>
@@ -25,8 +22,8 @@
                             </li>
                         @endforeach
                     </ul>
-                    {{ $question->links() }}
-                    You are viewing some paginated questions!
+                    {{-- {{ $question->links() }} --}}
+                    You are viewing some paginated searched questions!
                 </div>
             </div>
         </div>

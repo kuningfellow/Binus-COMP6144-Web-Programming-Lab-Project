@@ -12,4 +12,7 @@ class Question extends Model
     public function answers() {
         return $this->hasMany('Bjora\Answer');
     }
+    public function owner() {
+        return $this->belongsTo('Bjora\User');
+    }
 }

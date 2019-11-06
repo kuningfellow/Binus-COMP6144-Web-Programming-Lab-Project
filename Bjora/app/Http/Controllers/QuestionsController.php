@@ -15,6 +15,13 @@ class QuestionsController extends Controller
         $question = Question::paginate(1);
         return view('questions', ['question' => $question]);
     }
+    // controller to view searched question or username
+    public function search(Request $request) {
+        $question = Question::whereHas('owner', function($q) use ($request) {
+            $q->where('name', 'LIKE', '%'.$request['search'].'%');
+        })->orWhere('question', 'LIKE', '%'.$request['search'].'%')->paginate(1);
+        return view('search', ['question' => $question]);
+    }
     // controller to view single questions
     public function view(Request $request) {
         $question = Question::find($request['question_id']);
