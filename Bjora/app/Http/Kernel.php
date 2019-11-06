@@ -62,6 +62,7 @@ class Kernel extends HttpKernel
         'verified' => \Illuminate\Auth\Middleware\EnsureEmailIsVerified::class,
         'UserExists' => \Bjora\Http\Middleware\UserExists::class,
         'AnswerExists' => \Bjora\Http\Middleware\AnswerExists::class,
+        'MessageExists' => \Bjora\Http\Middleware\MessageExists::class,
         'QuestionExists' => \Bjora\Http\Middleware\QuestionExists::class,
         'TopicOptionExists' => \Bjora\Http\Middleware\TopicOptionExists::class,
         'QuestionIsOpen' => \Bjora\Http\Middleware\QuestionIsOpen::class,

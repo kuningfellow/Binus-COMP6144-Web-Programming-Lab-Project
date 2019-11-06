@@ -20,7 +20,11 @@
                         You are viewing user {{ $user->name }}'s messages!
                         <ul>
                         @foreach($message as $m)
-                            <li>Time: {{ $m->created_at }}<br> From: {{ $m->sender->name }}<br> Message: {{ $m->message }} </li>
+                            <li>Time: {{ $m->created_at }}<br> From: {{ $m->sender->name }}<br> Message: {{ $m->message }} <br>
+                                @component('parts.fastFormTemplate', ['action' => 'messages/delete', 'button' => 'delete message'])
+                                    <input type="hidden" name="message_id" value="{{ $m->id }}">
+                                @endcomponent
+                            </li>
                         @endforeach
                         </ul>
                     @endif

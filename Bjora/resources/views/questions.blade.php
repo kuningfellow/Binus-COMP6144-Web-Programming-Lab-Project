@@ -17,6 +17,9 @@
                     <ul>
                         @foreach ($question as $q)
                             <li>{{ $q->question }} , {{ $q->topic }}</li>
+                            @component('parts.fastFormTemplate', ['action' => 'questions/close', 'button' => 'close question'])
+                                <input type="hidden" name="question_id" value="{{ $q->id }}">
+                            @endcomponent
                         @endforeach
                     </ul>
                     {{ $question->links() }}
