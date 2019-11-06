@@ -12,29 +12,55 @@ class QuestionSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('questions')->insert([
-            'owner_id' => '1',
-            'status' => 'open',
-            'topic' => 'A',
-            'question' => 'is A a A?',
-            'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
-            'updated_at' => Carbon::now()->format('Y-m-d H:i:s'),
-        ]);
-        DB::table('questions')->insert([
-            'owner_id' => '1',
-            'status' => 'open',
-            'topic' => 'B',
-            'question' => 'is B a B?',
-            'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
-            'updated_at' => Carbon::now()->format('Y-m-d H:i:s'),
-        ]);
-        DB::table('questions')->insert([
-            'owner_id' => '1',
-            'status' => 'open',
-            'topic' => 'C',
-            'question' => 'is C a C?',
-            'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
-            'updated_at' => Carbon::now()->format('Y-m-d H:i:s'),
-        ]);
+        DB::table('questions')->insert(['owner_id' => '2','status' => 'open', 'topic' => 'Data Structures', 'question' => 'What weird food combinations do you really enjoy?', 'created_at' => Carbon::now()->format('Y-m-d H:i:s'), 'updated_at' => Carbon::now()->format('Y-m-d H:i:s'),]);
+        DB::table('questions')->insert(['owner_id' => '2','status' => 'open', 'topic' => 'Dynamic Programming', 'question' => 'What social stigma does society need to get over?', 'created_at' => Carbon::now()->format('Y-m-d H:i:s'), 'updated_at' => Carbon::now()->format('Y-m-d H:i:s'),]);
+        DB::table('questions')->insert(['owner_id' => '2','status' => 'open', 'topic' => 'Graph', 'question' => 'What food have you never eaten but would really like to try?', 'created_at' => Carbon::now()->format('Y-m-d H:i:s'), 'updated_at' => Carbon::now()->format('Y-m-d H:i:s'),]);
+        DB::table('questions')->insert(['owner_id' => '2','status' => 'open', 'topic' => 'Ad Hoc', 'question' => 'What’s something you really resent paying for?', 'created_at' => Carbon::now()->format('Y-m-d H:i:s'), 'updated_at' => Carbon::now()->format('Y-m-d H:i:s'),]);
+        DB::table('questions')->insert(['owner_id' => '2','status' => 'open', 'topic' => 'Graph', 'question' => 'What would a world populated by clones of you be like?', 'created_at' => Carbon::now()->format('Y-m-d H:i:s'), 'updated_at' => Carbon::now()->format('Y-m-d H:i:s'),]);
+        DB::table('questions')->insert(['owner_id' => '1','status' => 'open', 'topic' => 'Ad Hoc', 'question' => 'Do you think that aliens exist?', 'created_at' => Carbon::now()->format('Y-m-d H:i:s'), 'updated_at' => Carbon::now()->format('Y-m-d H:i:s'),]);
+        DB::table('questions')->insert(['owner_id' => '2','status' => 'open', 'topic' => 'Data Structures', 'question' => 'What are you currently worried about?', 'created_at' => Carbon::now()->format('Y-m-d H:i:s'), 'updated_at' => Carbon::now()->format('Y-m-d H:i:s'),]);
+        DB::table('questions')->insert(['owner_id' => '1','status' => 'open', 'topic' => 'Math', 'question' => 'Where are some unusual places you’ve been?', 'created_at' => Carbon::now()->format('Y-m-d H:i:s'), 'updated_at' => Carbon::now()->format('Y-m-d H:i:s'),]);
+        DB::table('questions')->insert(['owner_id' => '2','status' => 'open', 'topic' => 'Math', 'question' => 'Where do you get your news?', 'created_at' => Carbon::now()->format('Y-m-d H:i:s'), 'updated_at' => Carbon::now()->format('Y-m-d H:i:s'),]);
+        DB::table('questions')->insert(['owner_id' => '1','status' => 'open', 'topic' => 'Dynamic Programming', 'question' => 'What are some red flags to watch out for in daily life?', 'created_at' => Carbon::now()->format('Y-m-d H:i:s'), 'updated_at' => Carbon::now()->format('Y-m-d H:i:s'),]);
+        DB::table('questions')->insert(['owner_id' => '2','status' => 'open', 'topic' => 'Ad Hoc', 'question' => 'What movie can you watch over and over without ever getting tired of?', 'created_at' => Carbon::now()->format('Y-m-d H:i:s'), 'updated_at' => Carbon::now()->format('Y-m-d H:i:s'),]);
+        DB::table('questions')->insert(['owner_id' => '1','status' => 'open', 'topic' => 'Graph', 'question' => 'When you are old, what do you think children will ask you to tell stories about?', 'created_at' => Carbon::now()->format('Y-m-d H:i:s'), 'updated_at' => Carbon::now()->format('Y-m-d H:i:s'),]);
+        DB::table('questions')->insert(['owner_id' => '1','status' => 'open', 'topic' => 'Data Structures', 'question' => 'If you could switch two movie characters, what switch would lead to the most inappropriate movies?', 'created_at' => Carbon::now()->format('Y-m-d H:i:s'), 'updated_at' => Carbon::now()->format('Y-m-d H:i:s'),]);
+        DB::table('questions')->insert(['owner_id' => '2','status' => 'open', 'topic' => 'Ad Hoc', 'question' => 'What inanimate object would be the most annoying if it played loud upbeat music while being used?', 'created_at' => Carbon::now()->format('Y-m-d H:i:s'), 'updated_at' => Carbon::now()->format('Y-m-d H:i:s'),]);
+        DB::table('questions')->insert(['owner_id' => '2','status' => 'open', 'topic' => 'Dynamic Programming', 'question' => 'When did something start out badly for you but in the end, it was great?', 'created_at' => Carbon::now()->format('Y-m-d H:i:s'), 'updated_at' => Carbon::now()->format('Y-m-d H:i:s'),]);
+        DB::table('questions')->insert(['owner_id' => '1','status' => 'open', 'topic' => 'Math', 'question' => 'How would your country change if everyone, regardless of age, could vote?', 'created_at' => Carbon::now()->format('Y-m-d H:i:s'), 'updated_at' => Carbon::now()->format('Y-m-d H:i:s'),]);
+        DB::table('questions')->insert(['owner_id' => '1','status' => 'open', 'topic' => 'Data Structures', 'question' => 'What animal would be cutest if scaled down to the size of a cat?', 'created_at' => Carbon::now()->format('Y-m-d H:i:s'), 'updated_at' => Carbon::now()->format('Y-m-d H:i:s'),]);
+        DB::table('questions')->insert(['owner_id' => '2','status' => 'open', 'topic' => 'Dynamic Programming', 'question' => 'If your job gave you a surprise three day paid break to rest and recuperate, what would you do with those three days?', 'created_at' => Carbon::now()->format('Y-m-d H:i:s'), 'updated_at' => Carbon::now()->format('Y-m-d H:i:s'),]);
+        DB::table('questions')->insert(['owner_id' => '1','status' => 'open', 'topic' => 'Data Structures', 'question' => 'What’s wrong but sounds right?', 'created_at' => Carbon::now()->format('Y-m-d H:i:s'), 'updated_at' => Carbon::now()->format('Y-m-d H:i:s'),]);
+        DB::table('questions')->insert(['owner_id' => '1','status' => 'open', 'topic' => 'Graph', 'question' => 'What’s the most epic way you’ve seen someone quit or be fired?', 'created_at' => Carbon::now()->format('Y-m-d H:i:s'), 'updated_at' => Carbon::now()->format('Y-m-d H:i:s'),]);
+        DB::table('questions')->insert(['owner_id' => '2','status' => 'open', 'topic' => 'FFT', 'question' => 'If you couldn’t be convicted of any one type of crime, what criminal charge would you like to be immune to?', 'created_at' => Carbon::now()->format('Y-m-d H:i:s'), 'updated_at' => Carbon::now()->format('Y-m-d H:i:s'),]);
+        DB::table('questions')->insert(['owner_id' => '1','status' => 'open', 'topic' => 'Math', 'question' => 'What’s something that will always be in fashion, no matter how much time passes?', 'created_at' => Carbon::now()->format('Y-m-d H:i:s'), 'updated_at' => Carbon::now()->format('Y-m-d H:i:s'),]);
+        DB::table('questions')->insert(['owner_id' => '3','status' => 'open', 'topic' => 'Dynamic Programming', 'question' => 'What actors or actresses play the same character in almost every movie or show they do?', 'created_at' => Carbon::now()->format('Y-m-d H:i:s'), 'updated_at' => Carbon::now()->format('Y-m-d H:i:s'),]);
+        DB::table('questions')->insert(['owner_id' => '2','status' => 'open', 'topic' => 'FFT', 'question' => 'In the past people were buried with the items they would need in the afterlife, what would you want buried with you so you could use it in the afterlife?', 'created_at' => Carbon::now()->format('Y-m-d H:i:s'), 'updated_at' => Carbon::now()->format('Y-m-d H:i:s'),]);
+        DB::table('questions')->insert(['owner_id' => '1','status' => 'open', 'topic' => 'FFT', 'question' => 'What’s the best / worst practical joke that you’ve played on someone or that was played on you?', 'created_at' => Carbon::now()->format('Y-m-d H:i:s'), 'updated_at' => Carbon::now()->format('Y-m-d H:i:s'),]);
+        DB::table('questions')->insert(['owner_id' => '1','status' => 'open', 'topic' => 'Data Structures', 'question' => 'Who do you go out of your way to be nice to?', 'created_at' => Carbon::now()->format('Y-m-d H:i:s'), 'updated_at' => Carbon::now()->format('Y-m-d H:i:s'),]);
+        DB::table('questions')->insert(['owner_id' => '1','status' => 'open', 'topic' => 'Dynamic Programming', 'question' => 'Where do you get most of the decorations for your home?', 'created_at' => Carbon::now()->format('Y-m-d H:i:s'), 'updated_at' => Carbon::now()->format('Y-m-d H:i:s'),]);
+        DB::table('questions')->insert(['owner_id' => '1','status' => 'open', 'topic' => 'Graph', 'question' => 'What food is delicious but a pain to eat?', 'created_at' => Carbon::now()->format('Y-m-d H:i:s'), 'updated_at' => Carbon::now()->format('Y-m-d H:i:s'),]);
+        DB::table('questions')->insert(['owner_id' => '1','status' => 'open', 'topic' => 'Ad Hoc', 'question' => 'Who was your craziest / most interesting teacher', 'created_at' => Carbon::now()->format('Y-m-d H:i:s'), 'updated_at' => Carbon::now()->format('Y-m-d H:i:s'),]);
+        DB::table('questions')->insert(['owner_id' => '1','status' => 'open', 'topic' => 'Graph', 'question' => 'What “old person” things do you do?', 'created_at' => Carbon::now()->format('Y-m-d H:i:s'), 'updated_at' => Carbon::now()->format('Y-m-d H:i:s'),]);
+        DB::table('questions')->insert(['owner_id' => '3','status' => 'open', 'topic' => 'Ad Hoc', 'question' => 'What was the last photo you took?', 'created_at' => Carbon::now()->format('Y-m-d H:i:s'), 'updated_at' => Carbon::now()->format('Y-m-d H:i:s'),]);
+        DB::table('questions')->insert(['owner_id' => '1','status' => 'open', 'topic' => 'Data Structures', 'question' => 'What is the most amazing slow motion video you’ve seen?', 'created_at' => Carbon::now()->format('Y-m-d H:i:s'), 'updated_at' => Carbon::now()->format('Y-m-d H:i:s'),]);
+        DB::table('questions')->insert(['owner_id' => '3','status' => 'open', 'topic' => 'Math', 'question' => 'Which celebrity do you think is the most down to earth?', 'created_at' => Carbon::now()->format('Y-m-d H:i:s'), 'updated_at' => Carbon::now()->format('Y-m-d H:i:s'),]);
+        DB::table('questions')->insert(['owner_id' => '1','status' => 'open', 'topic' => 'Math', 'question' => 'What would be the worst thing to hear as you are going under anesthesia before heart surgery?', 'created_at' => Carbon::now()->format('Y-m-d H:i:s'), 'updated_at' => Carbon::now()->format('Y-m-d H:i:s'),]);
+        DB::table('questions')->insert(['owner_id' => '3','status' => 'open', 'topic' => 'Dynamic Programming', 'question' => 'What’s the spiciest thing you’ve ever eaten?', 'created_at' => Carbon::now()->format('Y-m-d H:i:s'), 'updated_at' => Carbon::now()->format('Y-m-d H:i:s'),]);
+        DB::table('questions')->insert(['owner_id' => '1','status' => 'open', 'topic' => 'Ad Hoc', 'question' => 'What’s the most expensive thing you’ve broken?', 'created_at' => Carbon::now()->format('Y-m-d H:i:s'), 'updated_at' => Carbon::now()->format('Y-m-d H:i:s'),]);
+        DB::table('questions')->insert(['owner_id' => '3','status' => 'open', 'topic' => 'Graph', 'question' => 'What obstacles would be included in the World’s most amazing obstacle course?', 'created_at' => Carbon::now()->format('Y-m-d H:i:s'), 'updated_at' => Carbon::now()->format('Y-m-d H:i:s'),]);
+        DB::table('questions')->insert(['owner_id' => '3','status' => 'open', 'topic' => 'Data Structures', 'question' => 'What makes you roll your eyes every time you hear it?', 'created_at' => Carbon::now()->format('Y-m-d H:i:s'), 'updated_at' => Carbon::now()->format('Y-m-d H:i:s'),]);
+        DB::table('questions')->insert(['owner_id' => '1','status' => 'open', 'topic' => 'Ad Hoc', 'question' => 'What do you think you are much better at than you actually are?', 'created_at' => Carbon::now()->format('Y-m-d H:i:s'), 'updated_at' => Carbon::now()->format('Y-m-d H:i:s'),]);
+        DB::table('questions')->insert(['owner_id' => '1','status' => 'open', 'topic' => 'Dynamic Programming', 'question' => 'Should kidneys be able to be bought and sold?', 'created_at' => Carbon::now()->format('Y-m-d H:i:s'), 'updated_at' => Carbon::now()->format('Y-m-d H:i:s'),]);
+        DB::table('questions')->insert(['owner_id' => '3','status' => 'open', 'topic' => 'Math', 'question' => 'What’s the most creative use of emojis you’ve ever seen?', 'created_at' => Carbon::now()->format('Y-m-d H:i:s'), 'updated_at' => Carbon::now()->format('Y-m-d H:i:s'),]);
+        DB::table('questions')->insert(['owner_id' => '3','status' => 'open', 'topic' => 'Data Structures', 'question' => 'When was the last time you got to tell someone “I told you so.”?', 'created_at' => Carbon::now()->format('Y-m-d H:i:s'), 'updated_at' => Carbon::now()->format('Y-m-d H:i:s'),]);
+        DB::table('questions')->insert(['owner_id' => '1','status' => 'open', 'topic' => 'Dynamic Programming', 'question' => 'What riddles do you know?', 'created_at' => Carbon::now()->format('Y-m-d H:i:s'), 'updated_at' => Carbon::now()->format('Y-m-d H:i:s'),]);
+        DB::table('questions')->insert(['owner_id' => '3','status' => 'open', 'topic' => 'Data Structures', 'question' => 'What’s your cure for hiccups?', 'created_at' => Carbon::now()->format('Y-m-d H:i:s'), 'updated_at' => Carbon::now()->format('Y-m-d H:i:s'),]);
+        DB::table('questions')->insert(['owner_id' => '3','status' => 'open', 'topic' => 'Graph', 'question' => 'What invention doesn’t get a lot of love, but has greatly improved the world?', 'created_at' => Carbon::now()->format('Y-m-d H:i:s'), 'updated_at' => Carbon::now()->format('Y-m-d H:i:s'),]);
+        DB::table('questions')->insert(['owner_id' => '1','status' => 'open', 'topic' => 'FFT', 'question' => 'What’s the most interesting building you’ve ever seen or been in?', 'created_at' => Carbon::now()->format('Y-m-d H:i:s'), 'updated_at' => Carbon::now()->format('Y-m-d H:i:s'),]);
+        DB::table('questions')->insert(['owner_id' => '3','status' => 'open', 'topic' => 'Math', 'question' => 'What mythical creature do you wish actually existed?', 'created_at' => Carbon::now()->format('Y-m-d H:i:s'), 'updated_at' => Carbon::now()->format('Y-m-d H:i:s'),]);
+        DB::table('questions')->insert(['owner_id' => '2','status' => 'open', 'topic' => 'Dynamic Programming', 'question' => 'What are your most important rules when going on a date?', 'created_at' => Carbon::now()->format('Y-m-d H:i:s'), 'updated_at' => Carbon::now()->format('Y-m-d H:i:s'),]);
+        DB::table('questions')->insert(['owner_id' => '1','status' => 'open', 'topic' => 'FFT', 'question' => 'How do you judge a person?', 'created_at' => Carbon::now()->format('Y-m-d H:i:s'), 'updated_at' => Carbon::now()->format('Y-m-d H:i:s'),]);
+        DB::table('questions')->insert(['owner_id' => '3','status' => 'open', 'topic' => 'FFT', 'question' => 'If someone narrated your life, who would you want to be the narrator?', 'created_at' => Carbon::now()->format('Y-m-d H:i:s'), 'updated_at' => Carbon::now()->format('Y-m-d H:i:s'),]);
     }
 }
