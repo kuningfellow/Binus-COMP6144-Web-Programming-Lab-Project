@@ -8,7 +8,7 @@ use Bjora\TopicOption;
 class TopicOptionsController extends Controller
 {
     public function index() {
-        $topic = TopicOption::all();
+        $topic = TopicOption::paginate(10);
         return view('topics', ['topic' => $topic]);
     }
     public function addTopic() {

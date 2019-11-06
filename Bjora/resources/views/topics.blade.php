@@ -26,6 +26,7 @@
                         @endforeach
                     </ul>
                     @component('parts.fastFormTemplate', ['action' => 'topics/add', 'method' => 'GET', 'button' => 'Add'])@endcomponent
+                    {{ $topic->links() }}
                     You are viewing available topics!
                 </div>
             </div>

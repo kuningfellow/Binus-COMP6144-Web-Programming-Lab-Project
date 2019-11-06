@@ -26,6 +26,7 @@
                         @endforeach
                         @component('parts.fastFormTemplate', ['action' => 'users/addADMIN', 'method' => 'GET', 'button' => 'Add'])@endcomponent
                     </ul>
+                    {{ $user->links() }}
                     You are viewing user list!
                 </div>
             </div>

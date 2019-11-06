@@ -9,7 +9,7 @@ use Bjora\User;
 class UsersController extends Controller
 {
     public function index() {
-        $user = User::all();
+        $user = User::paginate(10);
         return view('users', ['user' => $user]);
     }
     public function view(Request $request) {

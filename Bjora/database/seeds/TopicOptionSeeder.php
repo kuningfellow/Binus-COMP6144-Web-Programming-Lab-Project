@@ -29,5 +29,23 @@ class TopicOptionSeeder extends Seeder
         DB::table('topic_options')->insert([
             'topic' => 'FFT',
         ]);
+        DB::table('topic_options')->insert([
+            'topic' => 'Geometry',
+        ]);
+        DB::table('topic_options')->insert([
+            'topic' => 'Binary Search',
+        ]);
+        DB::table('topic_options')->insert([
+            'topic' => 'Bitmask',
+        ]);
+        DB::table('topic_options')->insert([
+            'topic' => 'Brute Force',
+        ]);
+        DB::table('topic_options')->insert([
+            'topic' => 'Constructive Algorithm',
+        ]);
+        DB::table('topic_options')->insert([
+            'topic' => 'Game Theory',
+        ]);
     }
 }
