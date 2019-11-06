@@ -7,7 +7,7 @@
         <div class="col-md-6">
             <select name="topic" form="question" class="form-control @error('topic') is-invalid @enderror">
                 @foreach($topic as $t)
-                    <option value="{{ $t->topic }}" @if(($post['topic']??"") == $t->topic) selected @endif>{{ $t->topic }}</option>
+                    <option value="{{ $t->topic }}" @if(($question['topic']??"") == $t->topic) selected @endif>{{ $t->topic }}</option>
                 @endforeach
             </select>
             @error('topic')
@@ -22,7 +22,7 @@
         <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('Question') }}</label>
 
         <div class="col-md-6">
-            <textarea id="question" name="question" placeholder="{{$post['question']??"Ask some question"}}" class="form-control @error('question') is-invalid @enderror" rows=3>{{$post['question']??""}}</textarea>
+            <textarea id="question" name="question" placeholder="{{$question['question']??"Ask some question"}}" class="form-control @error('question') is-invalid @enderror" rows=3>{{$question['question']??""}}</textarea>
 
             @error('question')
                 <span class="invalid-feedback" role="alert">

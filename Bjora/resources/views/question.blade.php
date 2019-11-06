@@ -15,20 +15,20 @@
                     @endif
 @component('parts.statusMessage')@endcomponent
                     
-                    @if ($post == NULL)
+                    @if ($question == NULL)
                         Question not found...
                     @else
                         You are viewing a specific question!
                         <br>
-                        Author: {{ $post['owner'] }}
+                        Author: {{ $question['owner'] }}
                         <br>
-                        Topic: {{ $post['topic'] }}
+                        Topic: {{ $question['topic'] }}
                         <br>
-                        Question: {{ $post['question'] }}
+                        Question: {{ $question['question'] }}
                         <br>
                         Answers:
                         <br>
-                        @foreach ($post['answers'] as $answer)
+                        @foreach ($question['answers'] as $answer)
                             Answerer: {{ $answer->owner->name }}<br>
                             Nigga said: {{ $answer->answer }}<br>
                         @endforeach
@@ -51,7 +51,7 @@
                             </div>
                         </div>
 
-                        <input type="hidden" name="question_id" value="{{ $post['id'] }}">
+                        <input type="hidden" name="question_id" value="{{ $question['id'] }}">
                         <div class="form-group row mb-0">
                             <div class="col-md-6 offset-md-4">
                                 <button type="submit" class="btn btn-primary">

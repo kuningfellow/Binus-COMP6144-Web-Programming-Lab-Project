@@ -15,11 +15,11 @@
                     @endif
 @component('parts.statusMessage')@endcomponent
                     <ul>
-                        @foreach ($post as $p)
-                            <li>{{ $p->question }} , {{ $p->topic }}</li>
+                        @foreach ($question as $q)
+                            <li>{{ $q->question }} , {{ $q->topic }}</li>
                         @endforeach
                     </ul>
-                    {{ $post->links() }}
+                    {{ $question->links() }}
                     You are viewing some paginated questions!
                 </div>
             </div>

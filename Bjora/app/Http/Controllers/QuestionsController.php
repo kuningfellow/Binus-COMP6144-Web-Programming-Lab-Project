@@ -12,24 +12,24 @@ class QuestionsController extends Controller
 {
     // controller to view paginated index
     public function index() {
-        $post = Question::paginate(1);
-        return view('questions', ['post' => $post]);
+        $question = Question::paginate(1);
+        return view('questions', ['question' => $question]);
     }
     // controller to view single questions
     public function view(Request $request) {
-        $post = Question::find($request['question_id']);
-        return view('question', ['post' => $post]);
+        $question = Question::find($request['question_id']);
+        return view('question', ['question' => $question]);
     }
     // controller to return addQuestion view
     public function addQuestion() {
         $topic = $this->getTopicOption();
-        return view('addQuestion', ['post' => NULL, 'topic' => $topic]);
+        return view('addQuestion', ['question' => NULL, 'topic' => $topic]);
     }
     // controller to return updateQuestion view
     public function updateQuestion(Request $request) {
-        $post = Question::find($request['question_id']);
+        $question = Question::find($request['question_id']);
         $topic = $this->getTopicOption();
-        return view('updateQuestion', ['post' => $post, 'topic' => $topic]);
+        return view('updateQuestion', ['question' => $question, 'topic' => $topic]);
     }
 
     /*
