@@ -68,8 +68,10 @@ class Kernel extends HttpKernel
         'hasUserAccess' => \Bjora\Http\Middleware\hasUserAccess::class,
         'hasAnswerAccess' => \Bjora\Http\Middleware\hasAnswerAccess::class,
         'hasQuestionAccess' => \Bjora\Http\Middleware\hasQuestionAccess::class,
+        'hasMessageAccess' => \Bjora\Http\Middleware\hasMessageAccess::class,
         'isUser' => \Bjora\Http\Middleware\isUser::class,
         'isAdmin' => \Bjora\Http\Middleware\isAdmin::class,
+        'notSameUser' => \Bjora\Http\Middleware\notSameUser::class,
     ];
 
     /**

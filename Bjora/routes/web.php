@@ -58,3 +58,6 @@ Route::post('/topics/update/', 'TopicOptionsController@DBupdate')->middleware(['
 Route::post('/topics/delete/', 'TopicOptionsController@DBdelete')->middleware(['isAdmin', 'TopicOptionExists']);
 
 // Message Section
+Route::get('/messages', 'MessagesController@index')->middleware(['isUser']);
+Route::post('/messages/add', 'MessagesController@DBadd')->middleware(['isUser', 'UserExists', 'notSameUser']);
+Route::post('/messages/delete', 'MessagesController@DBdelete')->middleware(['MessageExists', 'hasMessageAccess']);

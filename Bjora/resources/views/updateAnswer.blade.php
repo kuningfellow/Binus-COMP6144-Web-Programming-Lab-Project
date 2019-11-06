@@ -27,7 +27,7 @@
                             <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('Edit Answer') }}</label>
 
                             <div class="col-md-6">
-                                <textarea id="question" name="question" placeholder="{{$post['question']}}" class="form-control @error('question') is-invalid @enderror" rows=3>{{ $post['question'] }}</textarea>
+                                <textarea id="question" name="question" placeholder="{{$answer['answer']}}" class="form-control @error('answer') is-invalid @enderror" rows=3>{{ $answer['answer'] }}</textarea>
 
                                 @error('question')
                                     <span class="invalid-feedback" role="alert">
@@ -37,8 +37,8 @@
                             </div>
                         </div>
 
-                        <input type="hidden" name="answer_id" value="{{ $post['id'] }}">
-                        <input type="hidden" name="question_id" value="{{ $post['question_id'] }}">
+                        <input type="hidden" name="answer_id" value="{{ $answer['id'] }}">
+                        <input type="hidden" name="question_id" value="{{ $answer['question_id'] }}">
                         <div class="form-group row mb-0">
                             <div class="col-md-6 offset-md-4">
                                 <button type="submit" class="btn btn-primary">

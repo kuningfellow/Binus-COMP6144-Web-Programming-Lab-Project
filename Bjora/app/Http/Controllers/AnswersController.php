@@ -9,6 +9,10 @@ use Auth;
 
 class AnswersController extends Controller
 {
+    public function update(Request $request) {
+        $answer = Answer::find($request['answer_id']);
+        return view('updateAnswer', ['answer' => $answer]);
+    }
     public function DBadd(Request $request) {
         $request['owner_id'] = Auth::user()->id;
         $validatedData = $request->validate([ 'question_id' => 'required', 'owner_id' => 'required', 'answer' => 'required', ]);

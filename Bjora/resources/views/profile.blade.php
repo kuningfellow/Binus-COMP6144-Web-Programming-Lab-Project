@@ -18,6 +18,30 @@
                         User not found...
                     @else
                         You are viewing user {{ $user->name }}!
+                        <form method="POST" action="/messages/add" enctype="multipart/form-data">
+                            @csrf
+                        
+                            <div class="form-group row">
+                                <label for="message" class="col-md-4 col-form-label text-md-right">{{ __('Message') }}</label>
+                                <div class="col-md-6">
+                                    <textarea id="message" name="message" placeholder="Type your message here" class="form-control @error('message') is-invalid @enderror" rows=3></textarea>
+
+                                    @error('message')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                    @enderror
+                                </div>
+                            </div>
+                            <input type="hidden" name="user_id" value="{{ $user->id }}">
+                            <div class="form-group row mb-0">
+                                <div class="col-md-6 offset-md-4">
+                                    <button type="submit" class="btn btn-primary">
+                                        {{ __('Register') }}
+                                    </button>
+                                </div>
+                            </div>
+                        </form>
                     @endif
                 </div>
             </div>
