@@ -4,6 +4,7 @@ namespace Bjora\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Storage;
 use Bjora\User;
 
 class UsersController extends Controller
@@ -42,6 +43,7 @@ class UsersController extends Controller
             'date_of_birth' => ['required', 'date_format:Y-m-d'],
             'profile_picture' => ['required', 'mimes:jpeg,png,jpg'],
         ]);
+        $storage = Storage::put('public', $request['profile_picture']);
         User::create([
             'role' => $request['role'],
             'name' => $request['name'],
@@ -50,7 +52,7 @@ class UsersController extends Controller
             'gender' => $request['gender'],
             'address' => $request['address'],
             'date_of_birth' => $request['date_of_birth'],
-            'profile_picture' => $request['profile_picture'],
+            'profile_picture' => Storage::url($storage),
         ]);
         return redirect('users')->with('success', 'User successfully added');
     }
@@ -89,7 +91,10 @@ class UsersController extends Controller
             if ($request['gender']) $row->gender = $request['gender'];
             if ($request['address']) $row->address = $request['address'];
             if ($request['date_of_birth']) $row->date_of_birth = $request['date_of_birth'];
-            if ($request['profile_picture']) $row->profile_picture = $request['profile_picture'];
+            if ($request['profile_picture']) {
+                $storage = Storage::put('public', $request['profile_picture']);
+                $row->profile_picture = Storage::url($storage);
+            }
             $row->save();
         }
         return redirect('users/' . $request['user_id'])->with('success', 'User successfully updated');
