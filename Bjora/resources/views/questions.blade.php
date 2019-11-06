@@ -25,7 +25,9 @@
                             </li>
                         @endforeach
                     </ul>
-                    {{ $question->links() }}
+
+                    {{-- {{ $question->links() }} <- Search tidak persistent --}}
+                    {{ $question->appends(request()->except('page'))->links() }} {{-- <- Pake ini supaya search bisa persistent waktu paginate --}}
                     You are viewing some paginated questions!
                 </div>
             </div>
