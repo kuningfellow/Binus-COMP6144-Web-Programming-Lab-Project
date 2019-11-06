@@ -10,7 +10,7 @@ class UsersController extends Controller
 {
     public function index() {
         $user = User::all();
-        return view('profiles', ['user' => $user]);
+        return view('users', ['user' => $user]);
     }
     public function view(Request $request) {
         $user = User::find($request['user_id']);
@@ -52,7 +52,7 @@ class UsersController extends Controller
             'date_of_birth' => $request['date_of_birth'],
             'profile_picture' => $request['profile_picture'],
         ]);
-        return redirect('profiles')->with('success', 'User successfully added');
+        return redirect('users')->with('success', 'User successfully added');
     }
     public function DBupdate(Request $request) {
         $email_validate = [];
@@ -92,13 +92,13 @@ class UsersController extends Controller
             if ($request['profile_picture']) $row->profile_picture = $request['profile_picture'];
             $row->save();
         }
-        return redirect('profiles/' . $request['user_id'])->with('success', 'User successfully updated');
+        return redirect('users/' . $request['user_id'])->with('success', 'User successfully updated');
     }
     public function DBdelete(Request $request) {
         $row = User::find($request['user_id']);
         if ($row != NULL) {
             $row->delete();
         }
-        return redirect('profiles')->with('success', 'User successfully deleted');
+        return redirect('users')->with('success', 'User successfully deleted');
     }
 }

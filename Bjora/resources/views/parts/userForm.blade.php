@@ -1,4 +1,4 @@
-<form method="POST" novalidate action="/profiles/{{ $action }}" enctype="multipart/form-data" id="user">
+<form method="POST" novalidate action="/users/{{ $action }}" enctype="multipart/form-data" id="user">
     @csrf
 
     <div class="form-group row">

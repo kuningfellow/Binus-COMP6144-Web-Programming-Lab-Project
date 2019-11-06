@@ -20,7 +20,7 @@ Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 
 Route::get('/questions', 'QuestionsController@index');
-
+Route::get('/myQuestions', 'QuestionsController@myQuestions')->middleware(['isUser']);
 // Questions
 Route::get('/questions/add', 'QuestionsController@addQuestion')->middleware(['isUser']);
 Route::post('/questions/add', 'QuestionsController@DBadd')->middleware(['isUser']);
@@ -38,16 +38,16 @@ Route::post('/answers/update/', 'AnswersController@DBupdate')->middleware(['Ques
 Route::post('/answers/delete/', 'AnswersController@DBdelete')->middleware(['QuestionExists', 'AnswerExists', 'hasAnswerAccess']);
 
 // User Profile Section
-Route::get('/profiles', 'UsersController@index')->middleware(['isAdmin']);
-Route::get('/profiles/add', 'UsersController@addUser')->middleware(['isAdmin']);
-Route::get('/profiles/addADMIN', 'UsersController@addUserADMIN')->middleware(['isAdmin']);
-Route::get('/profiles/update/{user_id}', 'UsersController@updateUser')->middleware(['UserExists', 'hasUserAccess']);
-Route::get('/profiles/updateADMIN/{user_id}', 'UsersController@updateUserADMIN')->middleware(['isAdmin', 'UserExists']);
-Route::post('/profiles/add', 'UsersController@DBadd')->middleware(['isAdmin']);
-Route::post('/profiles/update/', 'UsersController@DBupdate')->middleware(['UserExists', 'hasUserAccess']);
-Route::post('/profiles/delete/', 'UsersController@DBdelete')->middleware(['UserExists', 'hasUserAccess']);
+Route::get('/users', 'UsersController@index')->middleware(['isAdmin']);
+Route::get('/users/add', 'UsersController@addUser')->middleware(['isAdmin']);
+Route::get('/users/addADMIN', 'UsersController@addUserADMIN')->middleware(['isAdmin']);
+Route::get('/users/update/{user_id}', 'UsersController@updateUser')->middleware(['UserExists', 'hasUserAccess']);
+Route::get('/users/updateADMIN/{user_id}', 'UsersController@updateUserADMIN')->middleware(['isAdmin', 'UserExists']);
+Route::post('/users/add', 'UsersController@DBadd')->middleware(['isAdmin']);
+Route::post('/users/update/', 'UsersController@DBupdate')->middleware(['UserExists', 'hasUserAccess']);
+Route::post('/users/delete/', 'UsersController@DBdelete')->middleware(['UserExists', 'hasUserAccess']);
 // View Profile
-Route::get('/profiles/{user_id}', 'UsersController@view'); //->middleware(['UserExists']);
+Route::get('/users/{user_id}', 'UsersController@view'); //->middleware(['UserExists']);
 
 // Topic Options Section
 Route::get('/topics', 'TopicOptionsController@index')->middleware(['isAdmin']);

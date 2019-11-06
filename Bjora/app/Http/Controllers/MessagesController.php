@@ -22,7 +22,7 @@ class MessagesController extends Controller
             'sender_id' => Auth::user()->id,
             'message' => $request['message'],
         ]);
-        return redirect('profiles/' . $request['user_id'])->with('success', 'Message successfully sent');
+        return redirect('users/' . $request['user_id'])->with('success', 'Message successfully sent');
     }
     public function DBdelete(Request $request) {
         $row = Message::find($request['message_id']);
