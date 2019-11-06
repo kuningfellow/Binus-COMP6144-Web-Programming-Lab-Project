@@ -22,7 +22,7 @@
                             </li>
                         @endforeach
                     </ul>
-                    {{-- {{ $question->links() }} --}}
+                    {{ $question->links() }}
                     You are viewing some paginated searched questions!
                 </div>
             </div>

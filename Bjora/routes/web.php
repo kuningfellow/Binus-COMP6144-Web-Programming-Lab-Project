@@ -21,8 +21,6 @@ Auth::routes();
 Route::get('/', 'QuestionsController@index');
 Route::get('/home', 'QuestionsController@index');
 
-Route::get('/search', 'QuestionsController@search');
-
 // Questions
 Route::get('/questions', 'QuestionsController@manageQuestions')->middleware(['isAdmin']);
 Route::get('/myQuestions', 'QuestionsController@myQuestions')->middleware(['isUser']);

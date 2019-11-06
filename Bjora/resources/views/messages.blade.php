@@ -27,6 +27,7 @@
                             </li>
                         @endforeach
                         </ul>
+                        {{ $message->links() }}
                     @endif
                 </div>
             </div>

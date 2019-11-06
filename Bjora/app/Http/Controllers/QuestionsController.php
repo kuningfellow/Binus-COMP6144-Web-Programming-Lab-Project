@@ -10,17 +10,14 @@ use Auth;
 
 class QuestionsController extends Controller
 {
-    // controller to view paginated index
-    public function index() {
-        $question = Question::paginate(1);
-        return view('questions', ['question' => $question]);
-    }
-    // controller to view searched question or username
-    public function search(Request $request) {
+    // controller to view and search paginated questions
+    public function index(Request $request) {
+        // $question = Question::paginate(1);
+        // return view('questions', ['question' => $question]);
         $question = Question::whereHas('owner', function($q) use ($request) {
             $q->where('name', 'LIKE', '%'.$request['search'].'%');
-        })->orWhere('question', 'LIKE', '%'.$request['search'].'%')->paginate(1);
-        return view('search', ['question' => $question]);
+        })->orWhere('question', 'LIKE', '%'.$request['search'].'%')->paginate(10);
+        return view('questions', ['question' => $question, 'search' => $request['search']]);
     }
     // controller to view single questions
     public function view(Request $request) {
@@ -28,11 +25,11 @@ class QuestionsController extends Controller
         return view('question', ['question' => $question]);
     }
     public function myQuestions() {
-        $question = Question::where('owner_id', Auth::user()->id)->paginate(1);
+        $question = Question::where('owner_id', Auth::user()->id)->paginate(10);
         return view('myQuestions', ['question' => $question]);
     }
     public function manageQuestions() {
-        $question = Question::paginate(1);
+        $question = Question::paginate(10);
         return view('manageQuestions', ['question' => $question]);
     }
     // controller to return addQuestion view

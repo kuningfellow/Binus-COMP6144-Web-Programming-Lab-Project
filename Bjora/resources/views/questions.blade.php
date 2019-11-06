@@ -14,8 +14,8 @@
                         </div>
                     @endif
 @component('parts.statusMessage')@endcomponent
-                    @component('parts.fastFormTemplate', ['action' => 'search', 'method' => 'GET', 'button' => 'Search'])
-                        <input type='text' name='search'>
+                    @component('parts.fastFormTemplate', ['action' => 'home', 'method' => 'GET', 'button' => 'Search'])
+                        <input type='text' name='search' value="{{ $search??"" }}">
                     @endcomponent
                     <ul>
                         @foreach ($question as $q)

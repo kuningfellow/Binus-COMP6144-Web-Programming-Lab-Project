@@ -9,7 +9,7 @@ use Auth;
 class MessagesController extends Controller
 {
     public function index() {
-        $message = Message::where('recipient_id', Auth::user()->id)->get();
+        $message = Message::where('recipient_id', Auth::user()->id)->paginate(10);
         return view('messages', ['user' => Auth::user(), 'message' => $message]);
     }
     public function DBadd(Request $request) {
