@@ -28,13 +28,13 @@
                                     @component('parts.PP', ['user' => $question->owner, 'size' => '70px', 'radius' => '100%'])@endcomponent
                                 </span>
                                 <span class="col-md-4 col-form-label text-md-left" style="float: left;">
-                                    <a class="nav-item" href="/users/{{ $question->owner->id }}">{{ $question->owner->name }}</a>
+                                    <a class="nav-item" href="/users/{{ $question->owner->id??"" }}">{{ $question->owner->name??"" }}</a>
                                     <br>
                                     {{ $question->created_at }}
                                 </span>
                             </div>
                             <div style="padding-bottom: 20px">{{ $question->question }}</div>
-                            @if (Auth::user() && Auth::user()->id == $question->owner_id)
+                            @if (Auth::user() && Auth::user()->id == $question->owner_id??"")
                                 @component('parts.fastFormTemplate', ['action' => 'questions/update', 'button' => 'Update', 'method' => 'GET', 'color' => 'secondary'])
                                     <input type="hidden" name="question_id" value="{{ $question->id }}">
                                 @endcomponent
@@ -54,11 +54,11 @@
                                     @component('parts.PP', ['user' => $answer->owner, 'size' => '70px', 'radius' => '100%'])@endcomponent
                                 </span>
                                 <span class="col-md-4 col-form-label text-md-left" style="float: left;">
-                                    <a class="nav-item" href="/users/{{ $answer->owner->id }}">{{ $answer->owner->name }}</a>
+                                    <a class="nav-item" href="/users/{{ $answer->owner->id??"" }}">{{ $answer->owner->name??"" }}</a>
                                     <br>
                                     Answered at: {{ $answer->created_at }}
                                 </span>
-                                <span style="float: right; visibility: @if(Auth::user() && Auth::user()->id==$answer->owner->id)visible @else hidden @endif">
+                                <span style="float: right; visibility: @if(Auth::user() && Auth::user()->id==$answer->owner->id??"")visible @else hidden @endif">
                                     @component('parts.fastFormTemplate', ['action' => 'answers/update', 'method' => 'GET', 'button' => 'Update', 'color' => 'secondary'])
                                         <input type="hidden" name="answer_id" value="{{ $answer->id }}">
                                         <input type="hidden" name="question_id" value="{{ $question->id }}">
