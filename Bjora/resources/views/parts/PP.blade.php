@@ -1,1 +1,1 @@
-<img src="{{ asset($user['profile_picture']) }}" alt="Profile picture of {{ $user['name'] }}" style="object-fit:cover;width:{{ $size }};height:{{ $size }};border-radius:{{ $radius }}">
+<img src="{{ asset($user['profile_picture']??"") }}" alt="Profile picture of {{ $user['name']??"" }}" style="object-fit:cover;width:{{ $size }};height:{{ $size }};border-radius:{{ $radius }}">

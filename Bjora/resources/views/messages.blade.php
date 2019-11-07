@@ -18,7 +18,7 @@
                                 @component('parts.PP', ['user' => $m->sender, 'size' => '200px', 'radius' => '100%'])@endcomponent
                             </span>
                             <span class="col-md-4 col-form-label text-md-left" style="float: left;">
-                                <a class="nav-item" href="/users/{{ $m->sender->id }}">{{ $m->sender->name }}</a>
+                                <a class="nav-item" href="/users/{{ $m->sender->id??"" }}">{{ $m->sender->name??"" }}</a>
                                 <br>
                                 Sent at: {{ $m->created_at }}
                                 <br><br>

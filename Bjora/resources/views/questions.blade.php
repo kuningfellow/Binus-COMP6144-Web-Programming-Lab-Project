@@ -33,7 +33,7 @@
                                     @component('parts.PP', ['user' => $q->owner, 'size' => '70px', 'radius' => '100%'])@endcomponent
                                 </span>
                                 <span class="col-md-4 col-form-label text-md-left" style="float: left;">
-                                    <a class="nav-item" href="/users/{{ $q->owner->id }}">{{ $q->owner->name }}</a>
+                                    <a class="nav-item" href="/users/{{ $q->owner->id??"" }}">{{ $q->owner->name??"" }}</a>
                                     <br>
                                     Created at: {{ $q->created_at }}
                                 </span>

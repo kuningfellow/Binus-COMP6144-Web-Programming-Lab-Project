@@ -19,8 +19,9 @@
                             <span class="col-md-4 col-form-label text-md-left" style="float: left;">
                                 {{$user->name}}<br>
                                 {{$user->email}}<br>
-                                {{$user->address}}<br>
+                                @if ($user->gender == 'male') Male @else Female @endif<br>
                                 {{$user->date_of_birth}}<br>
+                                {{$user->address}}<br>
                             </span>
                             @if (Auth::user() && Auth::user()->id == $user->id)
                                 <span style="float: right">
