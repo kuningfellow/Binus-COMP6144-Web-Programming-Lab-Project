@@ -41,7 +41,6 @@ Route::post('/answers/delete/', 'AnswersController@DBdelete')->middleware(['Ques
 
 // User Profile Section
 Route::get('/users', 'UsersController@index')->middleware(['isAdmin']);
-Route::get('/users/add', 'UsersController@addUser')->middleware(['isAdmin']);
 Route::get('/users/addADMIN', 'UsersController@addUserADMIN')->middleware(['isAdmin']);
 Route::get('/users/update/', 'UsersController@updateUser')->middleware(['UserExists', 'hasUserAccess']);
 Route::get('/users/updateADMIN/', 'UsersController@updateUserADMIN')->middleware(['isAdmin', 'UserExists']);

@@ -11,14 +11,11 @@ class UsersController extends Controller
 {
     public function index() {
         $user = User::paginate(10);
-        return view('users', ['user' => $user]);
+        return view('users', ['users' => $user]);
     }
     public function view(Request $request) {
         $user = User::find($request['user_id']);
         return view('user', ['user' => $user]);
-    }
-    public function addUser() {
-        return view('addUser', ['user' => NULL]);
     }
     public function addUserADMIN() {
         return view('addUserADMIN', ['user' => NULL]);

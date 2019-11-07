@@ -3,31 +3,29 @@
 @section('content')
 <div class="container">
     <div class="row justify-content-center">
-        <div class="col-md-8">
+        <div class="col-md-10">
             <div class="card">
-                <div class="card-header">Dashboard</div>
+                <div class="card-header">Manage Topics</div>
 
                 <div class="card-body">
-                    @if (session('status'))
-                        <div class="alert alert-success" role="alert">
-                            {{ session('status') }}
-                        </div>
-                    @endif
 @component('parts.statusMessage')@endcomponent
-                    <ul>
-                        @foreach ($topic as $t)
-                            <li>{{ $t->topic }}</li>
-                            @component('parts.fastFormTemplate', ['action' => 'topics/update', 'method' => 'GET', 'button' => 'Edit'])
-                                <input type="hidden" name="topic_id" value="{{ $t->id }}">
-                            @endcomponent
-                            @component('parts.fastFormTemplate', ['action' => 'topics/delete', 'button' => 'Delete'])
-                                <input type="hidden" name="topic_id" value="{{ $t->id }}">
-                            @endcomponent
-                        @endforeach
-                    </ul>
-                    @component('parts.fastFormTemplate', ['action' => 'topics/add', 'method' => 'GET', 'button' => 'Add'])@endcomponent
+                    @component('parts.fastFormTemplate', ['action' => 'topics/add', 'method' => 'GET', 'button' => 'Add', 'color' => 'success'])@endcomponent
+                    <br>
+                    <br>
+                    @foreach ($topic as $t)
+                        <div class="col-mid-10" style="margin-bottom: 20px">
+                            {{ $t->topic }}
+                            <span style="float: right">
+                                @component('parts.fastFormTemplate', ['action' => 'topics/update', 'method' => 'GET', 'button' => 'Edit', 'color' => 'warning'])
+                                    <input type="hidden" name="topic_id" value="{{ $t->id }}">
+                                @endcomponent
+                                @component('parts.fastFormTemplate', ['action' => 'topics/delete', 'button' => 'Delete', 'color' => 'danger'])
+                                    <input type="hidden" name="topic_id" value="{{ $t->id }}">
+                                @endcomponent
+                            </span>
+                        </div>
+                    @endforeach
                     {{ $topic->links() }}
-                    You are viewing available topics!
                 </div>
             </div>
         </div>

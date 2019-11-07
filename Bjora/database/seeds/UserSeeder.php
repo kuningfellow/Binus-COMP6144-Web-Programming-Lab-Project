@@ -24,22 +24,12 @@ class UserSeeder extends Seeder
         DB::table('users')->insert([
             'role' => 'member',
             'name' => 'Zero Two',
-            'email' => 'zerotwo@asd',
+            'email' => 'zero_two@asd',
             'password' => bcrypt('asdasd'),
             'gender' => 'female',
             'address' => 'Darling in The Franxx',
             'date_of_birth' => '9010-5-1',
             'profile_picture' => '/storage/zero_two.jpg'
-        ]);
-        DB::table('users')->insert([
-            'role' => 'member',
-            'name' => 'Hiro',
-            'email' => 'hiro@asd',
-            'password' => bcrypt('asdasd'),
-            'gender' => 'male',
-            'address' => 'Darling in The Franxx',
-            'date_of_birth' => '2910-2-1',
-            'profile_picture' => '/storage/hiro.jpg'
         ]);
         DB::table('users')->insert([
             'role' => 'member',
@@ -50,6 +40,16 @@ class UserSeeder extends Seeder
             'address' => 'Your Lie in April',
             'date_of_birth' => '4010-5-3',
             'profile_picture' => '/storage/kaori_miyazono.jpg'
+        ]);
+        DB::table('users')->insert([
+            'role' => 'member',
+            'name' => 'Hiro',
+            'email' => 'hiro@asd',
+            'password' => bcrypt('asdasd'),
+            'gender' => 'male',
+            'address' => 'Darling in The Franxx',
+            'date_of_birth' => '2910-2-1',
+            'profile_picture' => '/storage/hiro.jpg'
         ]);
         DB::table('users')->insert([
             'role' => 'member',

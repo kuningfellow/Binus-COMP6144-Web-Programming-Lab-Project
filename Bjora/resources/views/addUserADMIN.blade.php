@@ -9,7 +9,7 @@
 
                 <div class="card-body">
 @component('parts.statusMessage')@endcomponent
-                    @component('parts.userForm', ['user' => $user, 'action' => 'add'])
+                    @component('parts.userForm', ['user' => $user, 'action' => 'add', 'button' => 'Add'])
                         <div class="form-group row">
                             <label for="role" class="col-md-4 col-form-label text-md-right">{{ __('Role') }}</label>
                             <div class="col-md-6">

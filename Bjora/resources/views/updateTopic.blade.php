@@ -5,7 +5,7 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header">{{ __("New Topic") }}</div>
+                <div class="card-header">Update Topic</div>
 
                 <div class="card-body">
 @component('parts.statusMessage')@endcomponent

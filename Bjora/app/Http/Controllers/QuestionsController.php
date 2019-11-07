@@ -16,7 +16,7 @@ class QuestionsController extends Controller
         // return view('questions', ['question' => $question]);
         $question = Question::whereHas('owner', function($q) use ($request) {
             $q->where('name', 'LIKE', '%'.$request['search'].'%');
-        })->orWhere('question', 'LIKE', '%'.$request['search'].'%')->paginate(10);
+        })->orWhere('question', 'LIKE', '%'.$request['search'].'%')->orderBy('created_at', 'desc')->paginate(10);
         return view('questions', ['question' => $question, 'search' => $request['search']]);
     }
     // controller to view single questions
@@ -25,11 +25,11 @@ class QuestionsController extends Controller
         return view('question', ['question' => $question]);
     }
     public function myQuestions() {
-        $question = Question::where('owner_id', Auth::user()->id)->paginate(10);
+        $question = Question::where('owner_id', Auth::user()->id)->orderBy('created_at', 'desc')->paginate(10);
         return view('myQuestions', ['question' => $question]);
     }
     public function manageQuestions() {
-        $question = Question::paginate(10);
+        $question = Question::orderBy('created_at', 'desc')->paginate(10);
         return view('manageQuestions', ['question' => $question]);
     }
     // controller to return addQuestion view
@@ -51,8 +51,8 @@ class QuestionsController extends Controller
     public function DBadd(Request $request) {
         $request['owner_id'] = Auth::user()->id;
         $validatedData = $request->validate([ 'owner_id' => 'required', 'topic' => 'required', 'question' => 'required', ]);
-        Question::create([ 'owner_id' => $request['owner_id'], 'status' => 'open', 'topic' => $request['topic'], 'question' => $request['question'], ]);
-        return redirect('questions');
+        $id = Question::create([ 'owner_id' => $request['owner_id'], 'status' => 'open', 'topic' => $request['topic'], 'question' => $request['question'], ])->id;
+        return redirect('questions/' . $id)->with('success', 'Question successfully added');
     }
     /*
         Validates and does Model:Question updates
@@ -78,7 +78,7 @@ class QuestionsController extends Controller
             $row->status = 'closed';
             $row->save();
         }
-        return redirect('questions/' . $request['question_id'])->with('success', 'Question successfully closed');
+        return back()->with('success', 'Question successfully closed');
     }
     /*
         Validates and does Model:Question deletions
@@ -89,7 +89,7 @@ class QuestionsController extends Controller
         if ($row != NULL) {
             $row->delete();
         }
-        return redirect('questions')->with('success', 'Question successfully deleted');
+        return back()->with('success', 'Question successfully deleted');
     }
 
     // Gets selection

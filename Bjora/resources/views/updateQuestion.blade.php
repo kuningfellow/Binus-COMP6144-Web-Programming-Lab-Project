@@ -5,14 +5,7 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header">{{ __("Update Question") }}</div>
-
-                @error('owner')
-                    <div class="alert alert-danger">
-                        You must be logged in.
-                    </div>
-                @enderror
-
+                <div class="card-header">Update Question</div>
                 <div class="card-body">
 @component('parts.statusMessage')@endcomponent
                     @component('parts.questionForm', ['question' => $question, 'topic' => $topic, 'action' => 'update', 'button' => 'Update'])

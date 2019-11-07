@@ -5,21 +5,10 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header">{{ __("Update Question") }}</div>
-
-                @error('owner')
-                    <div class="alert alert-danger">
-                        You must be logged in.
-                    </div>
-                @enderror
-
-                @if (session()->has('failure'))
-                    <div class="alert alert-danger">
-                        {{ session('failure') }}
-                    </div>
-                @endif
+                <div class="card-header">Update Answer</div>
 
                 <div class="card-body">
+@component('parts.statusMessage')@endcomponent
                     <form method="POST" action="/answers/update/" enctype="multipart/form-data">
                         @csrf
 

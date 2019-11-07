@@ -17,7 +17,7 @@ class AnswersController extends Controller
         $request['owner_id'] = Auth::user()->id;
         $validatedData = $request->validate([ 'question_id' => 'required', 'owner_id' => 'required', 'answer' => 'required', ]);
         Answer::create([ 'question_id' => $request['question_id'], 'owner_id' => $request['owner_id'], 'answer' => $request['answer'], ]);
-        return redirect('questions/' . $request['question_id']);
+        return redirect('questions/' . $request['question_id'])->with('success', 'Answer successfully added');
     }
     public function DBupdate(Request $request) {
         $validatedData = $request->validate([ 'answer' => 'required', ]);
@@ -27,13 +27,13 @@ class AnswersController extends Controller
             $row->answer = $request['answer'];
             $row->save();
         }
-        return redirect('questions/' . $request['question_id']);
+        return redirect('questions/' . $request['question_id'])->with('success', 'Answer successfully updated');
     }
     public function DBdelete(Request $request) {
         $row = Answer::find($request['answer_id']);
         if ($row != NULL) {
             $row->delete();
         }
-        return redirect('questions/' . $request['question_id']);
+        return redirect('questions/' . $request['question_id'])->with('success', 'Answer successfully deleted');
     }
 }
