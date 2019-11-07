@@ -10,4 +10,8 @@ NIM: 2101664132<br>
 Kelas: BM-01<br>
 
 Notes:
-This website uses middlewares so visual element validation (disabling buttons, etc) doesn't add much to security or authentification
+<ul>
+  <li>This website uses middlewares so visual element validation (disabling buttons, etc) doesn't add much to security or authentification</li>
+  <li>Does not include ".env" file, so copy it and generate the needed keys</li>
+  <li>Link database and public storage using "php artisan storage:link"</li>
+</ul>
