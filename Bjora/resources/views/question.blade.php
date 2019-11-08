@@ -34,7 +34,7 @@
                                 </span>
                             </div>
                             <div style="padding-bottom: 20px">{{ $question->question }}</div>
-                            @if (Auth::user() && Auth::user()->id == $question->owner_id??"")
+                            @if (Auth::user() && Auth::user()->id == ($question->owner_id??""))
                                 @component('parts.fastFormTemplate', ['action' => 'questions/update', 'button' => 'Update', 'method' => 'GET', 'color' => 'secondary'])
                                     <input type="hidden" name="question_id" value="{{ $question->id }}">
                                 @endcomponent
@@ -58,7 +58,7 @@
                                     <br>
                                     Answered at: {{ $answer->created_at }}
                                 </span>
-                                <span style="float: right; visibility: @if(Auth::user() && Auth::user()->id==$answer->owner->id??"")visible @else hidden @endif">
+                                <span style="float: right; visibility: @if(Auth::user() && Auth::user()->id == ($answer->owner->id??"")) visible @else hidden @endif">
                                     @component('parts.fastFormTemplate', ['action' => 'answers/update', 'method' => 'GET', 'button' => 'Update', 'color' => 'secondary'])
                                         <input type="hidden" name="answer_id" value="{{ $answer->id }}">
                                         <input type="hidden" name="question_id" value="{{ $question->id }}">
