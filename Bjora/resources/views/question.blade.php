@@ -13,6 +13,7 @@
                     @if ($question == NULL)
                         Question not found...
                     @else
+                        <div style="margin-bottom: 30px; padding-left: 20px; padding-right: 20px; padding-top: 10px; padding-bottom: 20px; box-shadow: 10px 10px #acc4da; background-color: #edf4fa">
                         <div class="col-mid-10" style="margin-bottom: 20px">
                             {{$question->topic }}
                             @if ($question->status == "open")
@@ -21,7 +22,9 @@
                                 <span style="text-align:center;width:55px;height:23px;border-radius:15px;float:right;background-color: #fd4646; color: #8f1515">Closed</span>
                             @endif
                             <br>
+                            <span style="font-size: 1.5em">
                             <a href="/questions/{{$question->id}}">{{$question->question}}</a>
+                            </span>
                             <span style="float:right">{{ $question->answers->count() }}@if($question->answers->count()!=1) answers @else answer @endif</span>
                             <div class="col-mid-10" style="margin-bottom: 90px">
                                 <span class="col-form-label text-md-left" style="float: left;">
@@ -33,7 +36,6 @@
                                     {{ $question->created_at }}
                                 </span>
                             </div>
-                            <div style="padding-bottom: 20px">{{ $question->question }}</div>
                             @if (Auth::user() && Auth::user()->id == ($question->owner_id??""))
                                 @component('parts.fastFormTemplate', ['action' => 'questions/update', 'button' => 'Update', 'method' => 'GET', 'color' => 'secondary'])
                                     <input type="hidden" name="question_id" value="{{ $question->id }}">
@@ -49,6 +51,7 @@
                         <div style="padding-left: 30px">
                         <br>
                         @foreach ($question['answers'] as $answer)
+                            <div style="margin-bottom: 30px; padding-left: 20px; padding-right: 20px; padding-top: 10px; padding-bottom: 20px; box-shadow: 10px 7px #9bacc4; background-color: #d3ddec">
                             <div class="col-mid-10" style="margin-bottom: 90px">
                                 <span class="col-form-label text-md-left" style="float: left;">
                                     @component('parts.PP', ['user' => $answer->owner, 'size' => '70px', 'radius' => '100%'])@endcomponent
@@ -69,10 +72,12 @@
                                     @endcomponent
                                 </span>
                             </div>
-                            <div style="padding-bottom: 50px">
+                            {{-- <div style="padding-bottom: 50px"> --}}
                                 Nigga said: {{ $answer->answer }}
+                            {{-- </div> --}}
                             </div>
                         @endforeach
+                        </div>
                         <br>
                         @if($question->status == 'open' && Auth::user())
                             <form method="POST" action="/answers/add" enctype="multipart/form-data">

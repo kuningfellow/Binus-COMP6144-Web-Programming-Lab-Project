@@ -13,7 +13,8 @@
                     <br>
                     <br>
                     @foreach($users as $u)
-                    <div class="col-mid-10" style="height: 250px">
+                    <div class="col-mid-10" style="height: 250px; margin-bottom: 20px">
+                        <div style="height: 230px; padding-left: 20px; padding-right: 20px; padding-top: 10px; padding-bottom: 20px; box-shadow: -10px 10px #acc4da; background-color: #edf4fa">
                         <span class="col-form-label text-md-left" style="float: left; padding-right: 30px">
                             @component('parts.PP', ['user' => $u, 'size' => '200px', 'radius' => '0%'])@endcomponent
                         </span>
@@ -40,6 +41,7 @@
                                 <input type='hidden' name='user_id' value={{ $u->id }}>
                             @endcomponent
                         </span>
+                        </div>
                     </div>
                     @endforeach
                     {{ $users->links() }}

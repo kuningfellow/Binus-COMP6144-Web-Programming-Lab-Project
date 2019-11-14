@@ -14,6 +14,7 @@
                     @endif
                     @foreach($message as $m)
                         <div class="col-mid-10" style="height: 250px">
+                            <div style="height: 230px; padding-left: 20px; padding-right: 20px; padding-top: 10px; padding-bottom: 20px; box-shadow: -10px -7px #acc4da; background-color: #edf4fa">
                             <span class="col-form-label text-md-left" style="float: left; padding-right: 30px">
                                 @component('parts.PP', ['user' => $m->sender, 'size' => '200px', 'radius' => '100%'])@endcomponent
                             </span>
@@ -21,14 +22,17 @@
                                 <a class="nav-item" href="/users/{{ $m->sender->id??"" }}">{{ $m->sender->name??"" }}</a>
                                 <br>
                                 Sent at: {{ $m->created_at }}
-                                <br><br>
-                                Message: {{ $m->message }}
+                                <br>
+                                Message:
+                                <br>
+                                {{ $m->message }}
                             </span>
                             <span style="float: right">
                                 @component('parts.fastFormTemplate', ['action' => 'messages/delete', 'button' => 'Delete', 'color' => 'danger'])
                                     <input type='hidden' name='message_id' value="{{ $m->id }}">
                                 @endcomponent
                             </span>
+                            </div>
                         </div>
                     @endforeach
                     {{ $message->links() }}
