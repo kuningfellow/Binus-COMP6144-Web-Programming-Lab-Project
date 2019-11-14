@@ -14,6 +14,7 @@ Instructions:
   <li>Make a copy of ".env.example" and rename it to ".env"</li>
   <li>Fill the database environment variables on it</li>
   <li>Make sure xampp is running with the selected databse</li>
+  <li>"composer install"</li>
   <li>"php artisan key:generate"</li>
   <li>"php artisan storage:link"</li>
   <li>"php artisan migrate:fresh --seed"</li>
