@@ -72,9 +72,7 @@
                                     @endcomponent
                                 </span>
                             </div>
-                            {{-- <div style="padding-bottom: 50px"> --}}
-                                Nigga said: {{ $answer->answer }}
-                            {{-- </div> --}}
+                            {{ $answer->answer }}
                             </div>
                         @endforeach
                         </div>

@@ -13,7 +13,7 @@
                         You have no messages...
                     @endif
                     @foreach($message as $m)
-                        <div class="col-mid-10" style="height: 250px">
+                        <div class="col-mid-10" style="height: 250px; margin-bottom: 10px">
                             <div style="height: 230px; padding-left: 20px; padding-right: 20px; padding-top: 10px; padding-bottom: 20px; box-shadow: -10px -7px #acc4da; background-color: #edf4fa">
                             <span class="col-form-label text-md-left" style="float: left; padding-right: 30px">
                                 @component('parts.PP', ['user' => $m->sender, 'size' => '200px', 'radius' => '100%'])@endcomponent
