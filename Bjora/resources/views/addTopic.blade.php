@@ -9,7 +9,7 @@
 
                 <div class="card-body">
 @component('parts.statusMessage')@endcomponent
-                    @component('parts.topicForm', ['topic' => $topic, 'action' => 'add'])@endcomponent
+                    @component('parts.topicForm', ['topic' => $topic, 'action' => 'add', 'button' => 'Add'])@endcomponent
                 </div>
             </div>
         </div>
